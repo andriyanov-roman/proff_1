@@ -1,0 +1,3 @@
+﻿red:30
+green:10
+black:20

@@ -1,0 +1,3 @@
+blue:1200
+yellow:500
+black:100

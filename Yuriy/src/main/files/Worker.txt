@@ -1,0 +1,9 @@
+SisAdmin: Yura:2000.0
+SisAdmin: Fredy:2100.0
+SisAdmin: Hyst:2300.0
+Teacher: Fedor:1000.0
+Teacher: Gregor:1100.0
+Teacher: Frog:1200.0
+CleanManager: Vova:500.0
+CleanManager: Yota:600.0
+CleanManager: Tuti:700.0
