@@ -1,0 +1,5 @@
+Ivan:Ivanov:[6, 5, 4]:
+Vasya:Vasukov:[3, 3, 3]:
+Olya:Kurilenko:[555, 5, 5]:
+Igor:Igorenko:[4, 4, 2]:
+Grisha:Goncharenko:[6, 7, 3]:
