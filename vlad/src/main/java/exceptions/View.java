@@ -36,7 +36,7 @@ public class View {
                 good.setBarcode(Integer.parseInt(barcode));
 
                 System.out.println("Type: ");
-                String type =getType();
+                String type = getType();
                 good.setType(type);
 
                 System.out.println("Good is valid");
@@ -49,14 +49,14 @@ public class View {
                     start();
                 }
                 if (answerTwo.equalsIgnoreCase("n")) {
-                    String text = new Scanner(new File("/home/vladislav/Документы/goods")).
+                    String text = new Scanner(new File("vlad/src/main/java/exceptions/shop")).
                             useDelimiter("\\A").next();
                     System.out.println(text);
                     break;
                 }
             }
             if (answer.equals("2")) {
-                String text = new Scanner(new File("/home/vladislav/Документы/goods")).
+                String text = new Scanner(new File("vlad/src/main/java/exceptions/shop")).
                         useDelimiter("\\A").next();
                 System.out.println(text);
                 break;

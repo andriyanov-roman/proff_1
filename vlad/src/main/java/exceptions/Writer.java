@@ -12,7 +12,7 @@ public class Writer {
     public static void writeToFile(Good good){
         try {
             PrintWriter out = new PrintWriter(new BufferedWriter(
-                    new FileWriter("/home/vladislav/Документы/goods", true)));
+                    new FileWriter("vlad/src/main/java/exceptions/shop", true)));
             out.println(good);
             out.close();
         } catch (IOException e) {
