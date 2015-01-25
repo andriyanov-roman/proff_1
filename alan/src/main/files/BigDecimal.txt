@@ -1,0 +1,6 @@
+BigDecimal price = new BigDecimal("15");
+        BigDecimal priceTwo =  new BigDecimal("10.999999");
+        System.out.println(price.add(priceTwo));
+        BigDecimal result = priceTwo.round(new MathContext(2, RoundingMode.HALF_DOWN));
+        BigDecimal testDivide = price.divide(priceTwo, new MathContext(8, RoundingMode.HALF_UP));
+        System.out.println(testDivide);
