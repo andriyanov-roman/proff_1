@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 
 public class StudentsReport extends Report {
-    private String input = "/home/eugene/proff_repos/proff_1/yevhenii/src/java/input.txt";
-    private String output = "/home/eugene/proff_repos/proff_1/yevhenii/src/java/output.txt";
+    private String input = "/home/eugene/proff_repos/proff_1/yevhenii/src/java/swing/input.txt";
+    private String output = "/home/eugene/proff_repos/proff_1/yevhenii/src/java/swing/output.txt";
     ArrayList<StudentHelper> students = new ArrayList<>();
 
     public Integer getAverage(ArrayList<Integer> marks) {
