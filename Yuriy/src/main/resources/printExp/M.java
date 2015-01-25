@@ -1,8 +1,11 @@
-package exceptions;
+package printExp;
+
+
 import java.io.IOException;
 
-public class Main {
+public class M {
     public static void main(String[] args) throws IOException {
-        new View();
+        StairsPrint s = new StairsPrint();
+        s.print();
     }
 }
