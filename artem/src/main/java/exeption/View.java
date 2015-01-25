@@ -23,19 +23,18 @@ public class View {
         System.out.println("Enter goods" + "\n" + "Name of good");
         while (scanner.hasNext()) {
             Good good = new Good();
-            if(!(getValidatedName().equals("false"))){
-                good.setName(getValidatedName());
-            }
+            good.setName(getValidatedName());
             System.out.println("Number of good");
-            good.setNumber(getValidatedNumber());
+            good.setNumber(Integer.parseInt(getValidatedNumber()));
             System.out.println("Bar of good");
-            good.setBarcode(getValidatedBarCode());
+            good.setBarcode(Integer.parseInt(getValidatedBarCode()));
             System.out.println("Type of good");
             good.setType(getValidatedType());
+            System.out.println("Write 0 to save file");
             if ("0".equals(scanner.next())) {
                 System.out.println("Exit");
                 writeToFile(good, "/home/artem/IdeaProjects/zaebatiymagazin");
-                System.out.println("Save or continue");
+                System.out.println("Save or continue:yes/no");
                 String answer = scanner.next();
                 if (answer.equals("yes")) {
                     startProgram();
@@ -52,31 +51,31 @@ public class View {
             return name;
         } else {
             System.out.println("Incorrect name");
-            getValidatedName();
+            name = getValidatedName();
         }
-      return "false";
+        return name;
     }
 
-    public BigDecimal getValidatedNumber() {
+    public String getValidatedNumber() {
         String number = scanner.next();
         if (validator.getNumber(number)) {
-            return new BigDecimal(number);
+            return number;
         } else {
             System.out.println("Incorrect number");
-            getValidatedNumber();
+            number=getValidatedNumber();
         }
-        return null;
+        return number;
     }
 
-    public BigDecimal getValidatedBarCode() {
+    public String getValidatedBarCode() {
         String barCode = scanner.next();
         if (validator.gerBarCode(barCode)) {
-            return new BigDecimal(barCode);
+            return barCode;
         } else {
             System.out.println("Incorrect Bar Code");
-            getValidatedBarCode();
+            barCode=getValidatedBarCode();
         }
-        return null;
+        return barCode;
     }
 
     public String getValidatedType() {
@@ -85,10 +84,11 @@ public class View {
             return type;
         } else {
             System.out.println("Incorrect Type");
-            getValidatedType();
+            type = getValidatedType();
         }
-        return null;
+        return type;
     }
+
     public void writeToFile(Object anyObject, String path) {
         try {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));

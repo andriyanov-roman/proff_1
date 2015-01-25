@@ -7,8 +7,8 @@ import java.math.BigDecimal;
  */
 public class Good {
     String name;
-    BigDecimal number;
-    BigDecimal barcode;
+    int number;
+    long barcode;
     String type;
 
     public String getName() {
@@ -19,19 +19,19 @@ public class Good {
         this.name = name;
     }
 
-    public BigDecimal getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(BigDecimal number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
-    public BigDecimal getBarcode() {
+    public long getBarcode() {
         return barcode;
     }
 
-    public void setBarcode(BigDecimal barcode) {
+    public void setBarcode(long barcode) {
         this.barcode = barcode;
     }
 
