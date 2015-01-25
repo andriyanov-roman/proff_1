@@ -1,4 +1,4 @@
-package exceptionsExample;
+package excep_pkg;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

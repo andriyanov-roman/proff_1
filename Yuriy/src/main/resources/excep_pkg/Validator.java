@@ -1,4 +1,4 @@
-package exceptionsExample;
+package excep_pkg;
 
 
 public class Validator {
