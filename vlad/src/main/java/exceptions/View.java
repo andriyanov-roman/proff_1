@@ -1,9 +1,5 @@
 package exceptions;
 
-/**
- * Created by root on 25.01.15.
- */
-
 import java.io.*;
 import java.util.Scanner;
 
@@ -26,38 +22,29 @@ public class View {
                 break;
             }
             if (answer.equals("1")) {
+
                 System.out.println("Name: ");
                 String name = getName();
                 good.setName(name);
+
                 System.out.println("Quantity: ");
-                String quantity = scanner.next();
-                if (validator.isGoodQuantityValid(quantity)) {
-                    good.setQuantity(Integer.parseInt(quantity));
-                } else {
-                    System.out.println("not valid");
-                    break;
-                }
+                String quantity = getQuantity();
+                good.setQuantity(Integer.parseInt(quantity));
+
                 System.out.println("Barcode: ");
-                String barcode = scanner.next();
-                if (validator.isGoodBarcodeValid(barcode)) {
-                    good.setBarcode(Integer.parseInt(barcode));
-                } else {
-                    System.out.println("not valid");
-                    break;
-                }
+                String barcode = getBarcode();
+                good.setBarcode(Integer.parseInt(barcode));
+
                 System.out.println("Type: ");
-                String type = scanner.next();
-                if (validator.isGoodTypeValid(type)) {
-                    good.setType(type);
-                    ;
-                } else {
-                    System.out.println("goods not valid");
-                    break;
-                }
+                String type =getType();
+                good.setType(type);
+
                 System.out.println("Good is valid");
                 Writer.writeToFile(good);
-                System.out.println("Продолжить: y/n");
+
+                System.out.println("Continue: y/n");
                 String answerTwo = scanner.next();
+
                 if (answerTwo.equalsIgnoreCase("y")) {
                     start();
                 }
@@ -86,5 +73,38 @@ public class View {
             name = getName();
         }
         return name;
+    }
+
+    private String getQuantity() {
+        String quantity = scanner.next();
+        if (validator.isGoodQuantityValid(quantity)) {
+            return quantity;
+        } else {
+            System.out.println("Good quantity is not valid. Type again");
+            quantity = getQuantity();
+        }
+        return quantity;
+    }
+
+    private String getBarcode() {
+        String barcode = scanner.next();
+        if (validator.isGoodBarcodeValid(barcode)) {
+            return barcode;
+        } else {
+            System.out.println("Good barcode is not valid. Type again");
+            barcode = getBarcode();
+        }
+        return barcode;
+    }
+
+    private String getType() {
+        String type = scanner.next();
+        if (validator.isGoodTypeValid(type)) {
+            return type;
+        } else {
+            System.out.println("Good type is not valid. Type again");
+            type = getType();
+        }
+        return type;
     }
 }
