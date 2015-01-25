@@ -1,8 +1,5 @@
 package exceptions;
 
-/**
- * Created by root on 25.01.15.
- */
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
