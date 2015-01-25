@@ -1,4 +1,4 @@
-package exceptionsExample;
+package excep_pkg;
 
 import java.io.IOException;
 import java.util.Scanner;
