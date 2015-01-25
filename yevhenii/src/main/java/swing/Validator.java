@@ -40,7 +40,7 @@ public abstract class Validator {
     public void writeToFile(Object anyObject) {
         if (isValidated()) {
             try {
-                PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("/home/eugene/leleka", true)));
+                PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("yevhenii/src/main/java/swing/input.txt", true)));
                 out.println(anyObject.toString());
                 out.close();
             } catch (IOException e) {
