@@ -1,0 +1,3 @@
+﻿benzin:1000
+disel:2000
+hybrid:3000
