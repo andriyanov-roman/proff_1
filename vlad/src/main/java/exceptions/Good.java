@@ -1,8 +1,6 @@
 package exceptions;
 
-/**
- * Created by root on 25.01.15.
- */
+
 public class Good {
     private String name;
     private int quantity;

@@ -1,16 +1,17 @@
 package exceptions;
 
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Created by eugene on 24.01.15.
+ */
 public class Validator {
-
     public boolean isGoodNameValid(String goodValue) {
-        Matcher matcher = Pattern.compile("([A-Z]{1}[a-z]{2,15})").matcher(goodValue);
-        if (matcher.matches()) {
-            return true;
-        } else return false;
+        if (goodValue == null) {
+            return false;
+        }
+        return true;
     }
 
     public boolean isGoodQuantityValid(String goodValue) {
@@ -30,9 +31,10 @@ public class Validator {
     }
 
     public boolean isGoodTypeValid(String goodValue) {
-        Matcher matcher = Pattern.compile("([A-Z]{1}[a-z]{2,15})").matcher(goodValue);
-        if (matcher.matches()) {
-            return true;
-        } else return false;
+        if (goodValue == null) {
+            return false;
+        }
+        return true;
     }
 }
+
