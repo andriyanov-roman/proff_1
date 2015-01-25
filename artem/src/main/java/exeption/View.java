@@ -2,10 +2,7 @@ package exeption;
 
 import com.sun.org.apache.xpath.internal.SourceTree;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -14,12 +11,12 @@ public class View {
     private Scanner scanner = new Scanner(System.in);
     private Validator validator = new Validator();
 
-    public View() {
+    public View() throws IOException {
         startProgram();
     }
 
 
-    private void startProgram() {
+    private void startProgram() throws IOException {
         System.out.println("Enter goods" + "\n" + "Name of good");
         while (scanner.hasNext()) {
             Good good = new Good();
@@ -34,11 +31,17 @@ public class View {
             if ("0".equals(scanner.next())) {
                 System.out.println("Exit");
                 writeToFile(good, "/home/artem/IdeaProjects/zaebatiymagazin");
-                System.out.println("Save or continue:yes/no");
+                System.out.println("See report or continue");
                 String answer = scanner.next();
-                if (answer.equals("yes")) {
+                if (answer.equals("continue")) {
                     startProgram();
-                } else {
+                }
+                if(answer.equals("see")){
+                    String text = new Scanner(new File("/home/artem/IdeaProjects/zaebatiymagazin")).useDelimiter("\\A").next();
+                    System.out.println(text);
+                    break;
+                }
+                else {
                     break;
                 }
             }
@@ -97,7 +100,6 @@ public class View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }

@@ -1,0 +1,3 @@
+sedan:10000
+jeep:25000
+passat:15000

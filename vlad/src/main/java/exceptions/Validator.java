@@ -32,7 +32,6 @@ public class Validator {
     public boolean isGoodTypeValid(String goodValue) {
         Matcher matcher = Pattern.compile("([A-Z]{1}[a-z]{2,15})").matcher(goodValue);
         if (matcher.matches()) {
-            return true;
-        } else return false;
+            return true;} else return false;
     }
 }
