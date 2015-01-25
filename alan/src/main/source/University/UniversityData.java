@@ -1,4 +1,4 @@
-package University;/*package University;
+/*package University;
 public class UniversityData {
     public University [] getUniversity (){
         SubjectData sd = new SubjectData();
