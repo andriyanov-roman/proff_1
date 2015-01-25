@@ -1,0 +1,3 @@
+﻿red:30:﻿benzin:1000:﻿cupe:11000
+green:10:disel:2000:cabrio:2000
+black:20:hybrid:3000:limusine:3000
