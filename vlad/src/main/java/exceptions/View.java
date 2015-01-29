@@ -1,9 +1,11 @@
 package exceptions;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class View {
+    private String path = "vlad/src/main/java/exceptions/shop";
     Scanner scanner = new Scanner(System.in);
     Validator validator = new Validator();
 
@@ -36,7 +38,7 @@ public class View {
                 good.setType(getType());
 
                 System.out.println("Good is valid");
-                Writer.writeToFile(good);
+                Writer.writeToFile(good, path);
 
                 System.out.println("Continue: y/n");
                 String answerTwo = scanner.next();
