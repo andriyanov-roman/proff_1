@@ -24,20 +24,16 @@ public class View {
             if (answer.equals("1")) {
 
                 System.out.println("Name: ");
-                String name = getName();
-                good.setName(name);
+                good.setName(getName());
 
                 System.out.println("Quantity: ");
-                String quantity = getQuantity();
-                good.setQuantity(Integer.parseInt(quantity));
+                good.setQuantity(Integer.parseInt(getQuantity()));
 
                 System.out.println("Barcode: ");
-                String barcode = getBarcode();
-                good.setBarcode(Integer.parseInt(barcode));
+                good.setBarcode(Integer.parseInt(getBarcode()));
 
                 System.out.println("Type: ");
-                String type = getType();
-                good.setType(type);
+                good.setType(getType());
 
                 System.out.println("Good is valid");
                 Writer.writeToFile(good);
