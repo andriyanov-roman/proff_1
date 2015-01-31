@@ -24,12 +24,12 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            try {
-                bufferedInputStream.close();
-                inStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            if (inStream != null)
+                try {
+                    inStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
         }
     }
 }
