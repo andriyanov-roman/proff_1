@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class View {
     DataInput dataInput = new DataInput();
+
     public View() throws IOException {
         start();
     }
@@ -40,7 +41,7 @@ public class View {
                 good.setType(dataInput.getType());
 
                 System.out.println("Good is valid");
-                Writer.writeToFile(good,"/home/vladislav/proff_repos/proff_1/vlad/src/main/java/exceptions/shop");
+                Writer.writeToFile(good, "/home/vladislav/proff_repos/proff_1/vlad/src/main/java/exceptions/shop");
 
                 System.out.println("Continue: y/n");
                 String answerTwo = dataInput.scanner.next();
