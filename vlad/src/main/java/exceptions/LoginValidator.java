@@ -1,4 +1,4 @@
-package my_exceptions;
+package exceptions;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -4,42 +4,46 @@ import java.io.*;
 import java.util.Scanner;
 
 public class View {
-    Scanner scanner = new Scanner(System.in);
-    Validator validator = new Validator();
-
+    DataInput dataInput = new DataInput();
     public View() throws IOException {
         start();
     }
 
     public void start() throws IOException {
-        System.out.println("Enter new good: 1 / See report: 2");
+        System.out.println("Enter login:");
+        while (dataInput.scanner.hasNext()) {
+            User user = new User();
+            user.setLogin(dataInput.enterLogin());
 
-        while (scanner.hasNext()) {
+            System.out.println("Enter password:");
+            user.setPassword(dataInput.enterPassword());
+            System.out.println("OK");
+
+            System.out.println("Enter new good: 1 / See report: 2");
             Good good = new Good();
-            String answer = scanner.next();
+            String answer = dataInput.scanner.next();
             if (answer.equals("0")) {
                 System.out.println("Exit");
                 break;
             }
             if (answer.equals("1")) {
-
                 System.out.println("Name: ");
-                good.setName(getName());
+                good.setName(dataInput.getName());
 
                 System.out.println("Quantity: ");
-                good.setQuantity(Integer.parseInt(getQuantity()));
+                good.setQuantity(Integer.parseInt(dataInput.getQuantity()));
 
                 System.out.println("Barcode: ");
-                good.setBarcode(Integer.parseInt(getBarcode()));
+                good.setBarcode(Integer.parseInt(dataInput.getBarcode()));
 
                 System.out.println("Type: ");
-                good.setType(getType());
+                good.setType(dataInput.getType());
 
                 System.out.println("Good is valid");
                 Writer.writeToFile(good);
 
                 System.out.println("Continue: y/n");
-                String answerTwo = scanner.next();
+                String answerTwo = dataInput.scanner.next();
 
                 if (answerTwo.equalsIgnoreCase("y")) {
                     start();
@@ -59,48 +63,6 @@ public class View {
             }
         }
     }
-
-    private String getName() {
-        String name = scanner.next();
-        if (validator.isGoodNameValid(name)) {
-            return name;
-        } else {
-            System.out.println("Good name is not valid. Type again");
-            name = getName();
-        }
-        return name;
-    }
-
-    private String getQuantity() {
-        String quantity = scanner.next();
-        if (validator.isGoodQuantityValid(quantity)) {
-            return quantity;
-        } else {
-            System.out.println("Good quantity is not valid. Type again");
-            quantity = getQuantity();
-        }
-        return quantity;
-    }
-
-    private String getBarcode() {
-        String barcode = scanner.next();
-        if (validator.isGoodBarcodeValid(barcode)) {
-            return barcode;
-        } else {
-            System.out.println("Good barcode is not valid. Type again");
-            barcode = getBarcode();
-        }
-        return barcode;
-    }
-
-    private String getType() {
-        String type = scanner.next();
-        if (validator.isGoodTypeValid(type)) {
-            return type;
-        } else {
-            System.out.println("Good type is not valid. Type again");
-            type = getType();
-        }
-        return type;
-    }
 }
+
+
