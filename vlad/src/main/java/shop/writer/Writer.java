@@ -1,4 +1,4 @@
-package exceptions;
+package shop.writer;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

@@ -1,11 +1,11 @@
-package exceptions;
+package shop.validation;
 
 import java.util.Scanner;
 
 public class DataInput {
-    Scanner scanner = new Scanner(System.in);
-    Validator validator = new Validator();
-    LoginValidator loginValidator = new LoginValidator();
+    public Scanner scanner = new Scanner(System.in);
+    public GoodsValidator validator = new GoodsValidator();
+    public LoginValidator loginValidator = new LoginValidator();
 
     public String getName() {
         String name = scanner.next();
@@ -51,24 +51,24 @@ public class DataInput {
         return type;
     }
 
-    public String enterLogin() {
+    public void enterLoginAndPassword() {
         String login;
+        String password;
         try {
+            System.out.println("Enter login: ");
             login = scanner.next();
-            if (loginValidator.isLoginCorrect(login)) {
-                return login;
-            } else throw new LoginException();
+            System.out.println("Enter password: ");
+            password = scanner.next();
+            if (loginValidator.isUserCorrect(login, password)) {
+                System.out.println("OK");
+            }
+            else throw new LoginException();
         } catch (LoginException e) {
-            System.out.println("Try again! Type only letters from upper case");
-            login = enterLogin();
+            System.out.println("Try again!");
+            enterLoginAndPassword();
         }
-        return login;
     }
 
-    public String enterPassword() {
-        String password = scanner.next();
-        return password;
-    }
 }
 
 
