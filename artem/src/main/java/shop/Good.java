@@ -1,6 +1,4 @@
-package exeption;
-
-import java.math.BigDecimal;
+package shop;
 
 /**
  * Created by artem on 24.01.15.

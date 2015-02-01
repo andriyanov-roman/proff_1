@@ -1,4 +1,4 @@
-package exeption;
+package shop;
 
 /**
  * Created by artem on 28.01.15.
