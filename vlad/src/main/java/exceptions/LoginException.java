@@ -1,4 +1,4 @@
-package my_exceptions;
+package exceptions;
 
 public class LoginException extends Exception {
 }
