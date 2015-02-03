@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class DataInput {
     public Scanner scanner = new Scanner(System.in);
     public GoodsValidator validator = new GoodsValidator();
-    public LoginValidator loginValidator = new LoginValidator();
+    public UserValidator loginValidator = new UserValidator();
 
     public String getName() {
         String name = scanner.next();
