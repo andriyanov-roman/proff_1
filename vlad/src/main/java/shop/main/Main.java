@@ -1,4 +1,4 @@
-package exceptions;
+package shop.main;
 import java.io.IOException;
 
 public class Main {

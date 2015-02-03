@@ -1,13 +1,13 @@
-package exceptions;
+package shop.validation;
 
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Validator {
+public class GoodsValidator {
 
     public boolean isGoodNameValid(String goodValue) {
-        Matcher matcher = Pattern.compile("([A-Z]{1}[a-z]{2,15})").matcher(goodValue);
+        Matcher matcher = Pattern.compile("[A-Z]+[a-z-A-Z]*").matcher(goodValue);
         if (matcher.matches()) {
             return true;
         } else return false;
@@ -30,7 +30,7 @@ public class Validator {
     }
 
     public boolean isGoodTypeValid(String goodValue) {
-        Matcher matcher = Pattern.compile("([A-Z]{1}[a-z]{2,15})").matcher(goodValue);
+        Matcher matcher = Pattern.compile("[A-Z]+[a-z-A-Z]*").matcher(goodValue);
         if (matcher.matches()) {
             return true;} else return false;
     }

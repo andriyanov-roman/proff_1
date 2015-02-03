@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class View {
     private Scanner scanner = new Scanner(System.in);
     private Validator validator = new Validator();
-    private ViewException exception=new ViewException();
 
     public View() throws IOException {
         startProgram();
@@ -23,11 +22,7 @@ public class View {
             Good good = new Good();
             good.setName(getValidatedName());
             System.out.println("Number of good");
-            try {
-                good.setNumber(exception.DoSomething(Integer.parseInt(getValidatedNumber())));
-            }catch (MyException e) {
-            System.err.println(e);
-            }
+            good.setNumber(Integer.parseInt(getValidatedNumber()));
             System.out.println("Bar of good");
             good.setBarcode(Integer.parseInt(getValidatedBarCode()));
             System.out.println("Type of good");
@@ -35,24 +30,15 @@ public class View {
             System.out.println("Write 0 to save file");
             if ("0".equals(scanner.next())) {
                 System.out.println("Exit");
-                try {
-                    writeToFile(good, "/home/artem/IdeaProjects/zaebatiymagazin");
-                }catch (FileNotFoundException e){
-                    System.out.println("Incorrect directory");
-                }
-
-                System.out.println("See report or continue:1/2");
+                writeToFile(good, "/home/artem/IdeaProjects/zaebatiymagazin");
+                System.out.println("See report or continue");
                 String answer = scanner.next();
-                if (answer.equals("2")) {
+                if (answer.equals("continue")) {
                     startProgram();
                 }
-                if(answer.equals("1")){
-                    try {
-                        String text = new Scanner(new File("/home/artem/IdeaProjects/zaebatiymagazin")).useDelimiter("\\A").next();
-                        System.out.println(text);
-                    }catch (FileNotFoundException e){
-                        System.out.println("Incorrect directory");
-                    }
+                if(answer.equals("see")){
+                    String text = new Scanner(new File("/home/artem/IdeaProjects/zaebatiymagazin")).useDelimiter("\\A").next();
+                    System.out.println(text);
                     break;
                 }
                 else {
@@ -106,7 +92,7 @@ public class View {
         return type;
     }
 
-    public void writeToFile(Object anyObject, String path) throws FileNotFoundException{
+    public void writeToFile(Object anyObject, String path) {
         try {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));
             out.println(anyObject.toString());

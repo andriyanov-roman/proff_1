@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
  * Created by artem on 24.01.15.
  */
 public class Validator {
-    public static final String PATTERN_FOR_NAME = "([a-z]{2,15})";
-    public static final String PATTERN_FOR_NUMBER = "([0-9]{1,5})";
+    public static final String PATTERN_FOR_NAME = "([A-Z]{1}[a-z]{2,15})";
+    public static final String PATTERN_FOR_NUMBER = "([0-9]{2,5})";
     public static final String PATTERN_FOR_BARCODE = "([0-9]{2,10})";
 
     public boolean getName(String name) {
