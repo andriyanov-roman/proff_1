@@ -1,21 +1,23 @@
 package shop.main;
 
-import shop.users.User;
-import shop.validation.Good;
+import shop.goods.Good;
+import shop.goods.GoodUtility;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class View {
     shop.validation.DataInput dataInput = new shop.validation.DataInput();
+    GoodUtility goodUtility = new GoodUtility();
 
     public View() throws IOException {
+        dataInput.enterLoginAndPassword();
         start();
     }
 
     public void start() throws IOException {
-        dataInput.enterLoginAndPassword();
-        System.out.println("Enter new good: 1 / See report: 2");
+
+        System.out.println("Enter new good: 1 / See report: 2 / Make ZIP: 3");
 
         while (dataInput.scanner.hasNext()) {
             Good good = new Good();
@@ -37,8 +39,7 @@ public class View {
                 System.out.println("Type: ");
                 good.setType(dataInput.getType());
 
-                System.out.println("Good is valid");
-                shop.writer.Writer.writeToFile(good, "/home/vladislav/proff_repos/proff_1/vlad/src/main/java/exceptions/shop");
+                goodUtility.addGood(good);
 
                 System.out.println("Continue: y/n");
                 String answerTwo = dataInput.scanner.next();
@@ -47,16 +48,17 @@ public class View {
                     start();
                 }
                 if (answerTwo.equalsIgnoreCase("n")) {
-                    String text = new Scanner(new File("/vlad/src/main/java/files")).
-                            useDelimiter("\\A").next();
-                    System.out.println(text);
+                    goodUtility.printAllGoods();
                     break;
                 }
             }
             if (answer.equals("2")) {
-                String text = new Scanner(new File("/vlad/src/main/java/files")).
-                        useDelimiter("\\A").next();
-                System.out.println(text);
+                goodUtility.printAllGoods();
+                break;
+            }
+            if (answer.equals("3")) {
+                goodUtility.makeZIP();
+                System.out.println("ZIP made");
                 break;
             }
         }

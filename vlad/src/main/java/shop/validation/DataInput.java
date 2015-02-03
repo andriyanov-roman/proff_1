@@ -1,5 +1,4 @@
 package shop.validation;
-
 import java.util.Scanner;
 
 public class DataInput {
@@ -67,6 +66,7 @@ public class DataInput {
             System.out.println("Try again!");
             enterLoginAndPassword();
         }
+
     }
 
 }

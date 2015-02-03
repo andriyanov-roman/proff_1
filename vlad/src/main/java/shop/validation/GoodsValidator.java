@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class GoodsValidator {
 
     public boolean isGoodNameValid(String goodValue) {
-        Matcher matcher = Pattern.compile("([A-Z]{1}[a-z]{2,15})").matcher(goodValue);
+        Matcher matcher = Pattern.compile("[A-Z]+[a-z-A-Z]*").matcher(goodValue);
         if (matcher.matches()) {
             return true;
         } else return false;
@@ -30,7 +30,7 @@ public class GoodsValidator {
     }
 
     public boolean isGoodTypeValid(String goodValue) {
-        Matcher matcher = Pattern.compile("([A-Z]{1}[a-z]{2,15})").matcher(goodValue);
+        Matcher matcher = Pattern.compile("[A-Z]+[a-z-A-Z]*").matcher(goodValue);
         if (matcher.matches()) {
             return true;} else return false;
     }

@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Writer {
+public class GoodWriter {
 
     public static <T> void writeToFile(T any, String path) {
         try {

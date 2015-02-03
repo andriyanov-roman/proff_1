@@ -1,5 +1,4 @@
 package shop.validation;
-
 import shop.users.UserBase;
 
 import java.util.regex.Matcher;
@@ -14,7 +13,6 @@ public class LoginValidator {
             if (userBase.getUserBase().get(i).getLogin().equals(login) && userBase.getUserBase().get(i).getPassword().equals(password)) {
                return true;
             }
-
         }
         return false;
     }
