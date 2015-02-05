@@ -1,10 +1,11 @@
-package excep_pkg;
+package shop;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("privet");
-        new View();
+       new View();
+
     }
 }
