@@ -43,13 +43,7 @@ public class Authentification {
                         pw = true;
 
 
-                    } /*else if (counter == 0) {
-                            break;
-                        }*//* else {
-
-
-
-                        }*/
+                    }
                 }
             }
         }
