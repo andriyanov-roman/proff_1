@@ -1,20 +1,35 @@
 package tests.io;
 
-import java.io.Serializable;
 
-public class User implements Serializable{
+public class User {
+    private Long id;
+    private Integer age;
+    private Boolean gender;
     private String name;
-    private String surname;
-    private int age;
-    private String login;
-    private transient String password;
+    private String secondName;
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -25,38 +40,35 @@ public class User implements Serializable{
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     @Override
-    public String toString() {
-        return "User " +
-                "age " + age +
-                ", name " + name +
-                ", surname " + surname +
-                ", login " + login  +
-                ", password " + password;
-
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        if (!age.equals(user.age)) return false;
+        if (!gender.equals(user.gender)) return false;
+        if (!id.equals(user.id)) return false;
+        if (!name.equals(user.name)) return false;
+        if (!secondName.equals(user.secondName)) return false;
+        return true;
     }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + age.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + secondName.hashCode();
+        result = 31 * result + gender.hashCode();
+        return result;
+    }
+
 }
