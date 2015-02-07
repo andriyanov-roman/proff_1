@@ -31,15 +31,17 @@ public class View {
     public void doWork() {
 
         System.out.println("1) Add new good" + "\n" +
-                "2) Make a daily report" + "\n" + "0) Exit");
+                /*"2) Make a daily report" + "\n"*/  "2) Archivation" + "\n" + "0) Exit");
         String quest = scanner.next();
 
-        while (quest !=null) {
+        while (quest != null) {
             Good good = new Good();
             Validator v = new Validator();
             if (quest.equals("0")) {
                 System.out.println("Closed");
                 break;
+            } else if (quest.equals("2")) {
+                new ZipMaker();
             } else if ("1".equals(quest)) {
                 System.out.println("Enter name:");
                 String name = scanner.next();
@@ -85,7 +87,7 @@ public class View {
                     }
                     System.out.println("OK!");
                 }
-                break;
+                doWork();
             }
         }
     }

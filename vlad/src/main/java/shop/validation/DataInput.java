@@ -1,4 +1,6 @@
 package shop.validation;
+import shop.goods.GoodUtility;
+
 import java.util.Scanner;
 
 public class DataInput {
@@ -67,6 +69,18 @@ public class DataInput {
             enterLoginAndPassword();
         }
 
+    }
+    public void seeSorted(){
+        GoodUtility goodUtility = new GoodUtility();
+        System.out.println("See sorted by barcode: 1 / See sorted by quantity: 2");
+
+        String answer = scanner.next();
+        if(answer.equals("1")){
+            goodUtility.getSortedByBarcode();
+        }
+        if(answer.equals("2")){
+            goodUtility.getSortedByQuantity();
+        }
     }
 
 }
