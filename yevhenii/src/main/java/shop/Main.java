@@ -1,14 +1,14 @@
-package exeption;
+package shop;
+
+import shop.user.Authentification;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
- * Created by artem on 24.01.15.
+ * Created by eugene on 01.02.15.
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        new View();
-
+        new Shop();
     }
 }
