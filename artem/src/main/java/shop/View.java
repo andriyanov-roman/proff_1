@@ -2,6 +2,8 @@ package shop;
 
 import java.io.*;
 import java.util.Scanner;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 
 public class View {
@@ -42,7 +44,7 @@ public class View {
             if ("0".equals(scanner.next())) {
                 System.out.println("Exit");
                 writeToFile(good, "/home/artem/IdeaProjects/zaebatiymagazin");
-                System.out.println("See report or continue:1/2");
+                System.out.println("See report/continue/zipreport:1/2/3");
                 String answer = scanner.next();
                 if ("2".equals(answer)) {
                     startProgram();
@@ -55,10 +57,13 @@ public class View {
                         System.out.println("Incorrect directory");
                     }
                     break;
-                } else {
-                    break;
                 }
+                if("3".equals(answer)){
+                    createArchive("/home/artem/IdeaProjects/zaebatiymagazin");
+                    break;
+                }else break;
             }
+
         }
     }
 
@@ -105,6 +110,31 @@ public class View {
             type = getValidatedType();
         }
         return type;
+    }
+    public void createArchive(String file){
+        byte[] buffer = new byte[1024];
+
+        try{
+
+            FileOutputStream fos = new FileOutputStream("/home/artem/IdeaProjects/report.zip");
+            ZipOutputStream zos = new ZipOutputStream(fos);
+            ZipEntry ze= new ZipEntry("report.txt");
+            zos.putNextEntry(ze);
+            FileInputStream in = new FileInputStream(file);
+
+            int len;
+            while ((len = in.read(buffer)) > 0) {
+                zos.write(buffer, 0, len);
+            }
+
+            in.close();
+            zos.closeEntry();
+            zos.close();
+            System.out.println("Done");
+
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     public void writeToFile(Object anyObject, String path) {
