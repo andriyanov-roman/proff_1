@@ -1,33 +1,24 @@
 package tests.collections;
 
+import shop.goods.Good;
 import tests.io.User;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        User us1 = new User();
-        us1.setName("Vlad");
-        us1.setAge(1);
-        us1.setGender(true);
-        us1.setSecondName("K");
-        us1.setId(12321L);
-
-        User us2 = new User();
-        us2.setName("Vlad");
-        us2.setAge(1);
-        us2.setGender(true);
-        us2.setSecondName("K");
-        us2.setId(12321L);
-
-        Set<User> users = new HashSet<>();
-        users.add(us1);
-        users.add(us2);
-
-        for(User u : users){
-            System.out.println(u.hashCode());
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.add(12);
+        linkedList.add(123);
+        linkedList.add(1232);
+        System.out.println(linkedList);
+        System.out.println(linkedList);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("Vlad", 1);
+        map.put("Zhenya", 2);
+        map.put("Arten", 3);
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
         }
-        System.out.println(users.size());
     }
 }
