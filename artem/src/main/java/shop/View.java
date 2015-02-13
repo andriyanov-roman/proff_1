@@ -1,23 +1,36 @@
-package exeption;
-
-import com.sun.org.apache.xpath.internal.SourceTree;
+package shop;
 
 import java.io.*;
-import java.math.BigDecimal;
 import java.util.Scanner;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 
 public class View {
     private Scanner scanner = new Scanner(System.in);
     private Validator validator = new Validator();
+    private ControlUser controlUser = new ControlUser();
 
     public View() throws IOException {
-        startProgram();
+        userControl();
     }
 
+    private void userControl() throws IOException {
+        System.out.println("Enter Login and password");
+        while (scanner.hasNext()) {
+            try {
+                if (controlUser.checkUser(scanner.next(), scanner.next())) {
+                    startProgram();
+                }
+            } catch (MyException e) {
+                System.out.println(e);
+                userControl();
+            }
+        }
+    }
 
-    private void startProgram() throws IOException {
-        System.out.println("Enter goods" + "\n" + "Name of good");
+    private void startProgram() {
+        System.out.println("Enter goods " + "Name of good");
         while (scanner.hasNext()) {
             Good good = new Good();
             good.setName(getValidatedName());
@@ -31,22 +44,29 @@ public class View {
             if ("0".equals(scanner.next())) {
                 System.out.println("Exit");
                 writeToFile(good, "/home/artem/IdeaProjects/zaebatiymagazin");
-                System.out.println("See report or continue");
+                System.out.println("See report/continue/zipreport:1/2/3");
                 String answer = scanner.next();
-                if (answer.equals("continue")) {
+                if ("2".equals(answer)) {
                     startProgram();
                 }
-                if(answer.equals("see")){
-                    String text = new Scanner(new File("/home/artem/IdeaProjects/zaebatiymagazin")).useDelimiter("\\A").next();
-                    System.out.println(text);
+                if ("1".equals(answer)) {
+                    try {
+                        String text = new Scanner(new File("/home/artem/IdeaProjects/zaebatiymagazin")).useDelimiter("\\A").next();
+                        System.out.println(text);
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Incorrect directory");
+                    }
                     break;
                 }
-                else {
+                if("3".equals(answer)){
+                    createArchive("/home/artem/IdeaProjects/zaebatiymagazin");
                     break;
-                }
+                }else break;
             }
+
         }
     }
+
 
     public String getValidatedName() {
         String name = scanner.next();
@@ -65,7 +85,7 @@ public class View {
             return number;
         } else {
             System.out.println("Incorrect number");
-            number=getValidatedNumber();
+            number = getValidatedNumber();
         }
         return number;
     }
@@ -76,7 +96,7 @@ public class View {
             return barCode;
         } else {
             System.out.println("Incorrect Bar Code");
-            barCode=getValidatedBarCode();
+            barCode = getValidatedBarCode();
         }
         return barCode;
     }
@@ -90,6 +110,31 @@ public class View {
             type = getValidatedType();
         }
         return type;
+    }
+    public void createArchive(String file){
+        byte[] buffer = new byte[1024];
+
+        try{
+
+            FileOutputStream fos = new FileOutputStream("/home/artem/IdeaProjects/report.zip");
+            ZipOutputStream zos = new ZipOutputStream(fos);
+            ZipEntry ze= new ZipEntry("report.txt");
+            zos.putNextEntry(ze);
+            FileInputStream in = new FileInputStream(file);
+
+            int len;
+            while ((len = in.read(buffer)) > 0) {
+                zos.write(buffer, 0, len);
+            }
+
+            in.close();
+            zos.closeEntry();
+            zos.close();
+            System.out.println("Done");
+
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     public void writeToFile(Object anyObject, String path) {

@@ -1,4 +1,4 @@
-package excep_pkg;
+package shop;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -9,11 +9,14 @@ public class GoodsModel {
 
     public static void writeToFile(Goods good) throws IOException {
         try {
-            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("src\\GoodsList.txt", true)));
+            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Yuriy/src/main/files/goods.txt", true)));
             out.println(good);
             out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+
 }
