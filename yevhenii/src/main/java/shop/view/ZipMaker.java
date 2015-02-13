@@ -14,8 +14,6 @@ public class ZipMaker {
         toZip();
     }
 
-
-
     public void toZip() {
         FileInputStream in = null;
         ZipOutputStream out = null;
