@@ -33,10 +33,7 @@ public class Goods {
     @Override
     public String toString() {
         return
-                "name = '" + name + '\'' +
-                ", amount = " + amount +
-                ", barcode = " + barcode +
-                ", type = '" + type + '\'';
+                name + " " + amount + " " + barcode + " " + type;
     }
 
     public String getType() {
