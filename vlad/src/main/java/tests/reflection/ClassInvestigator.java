@@ -68,9 +68,7 @@ public class ClassInvestigator {
                             System.out.println("private " + f.getType().getSimpleName() + " " + f.getName() +
                                     " = " + "''" + f.get(o) +  "''" + ";");}
                         else
-                            System.out.println("private " + f.getType().getSimpleName() + " " + f.getName() +
-                                    " =" + " new " + f.getType().getSimpleName() + "()" + ";");
-                    }
+                            System.out.println("private " + f.getType().getSimpleName() + " " + f.getName() + " =" + " new " + f.getType().getSimpleName() + "()" + ";");}
                 }
                 if (Modifier.isProtected(mod)) {
                     if (f.getType().isPrimitive()) {
@@ -88,7 +86,6 @@ public class ClassInvestigator {
                 }
             }
         }
-
     }
 
     private static void getMethods(Class cl) {
