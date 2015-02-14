@@ -43,11 +43,6 @@ public class Good {
 
     @Override
     public String toString() {
-        return "Good" +
-                "name='" + name + '\'' +
-                ", quantity=" + quantity +
-                ", code=" + code +
-                ", type='" + type + '\''
-                ;
+        return name + ":" + quantity +":" + code + ":" + type;
     }
 }
