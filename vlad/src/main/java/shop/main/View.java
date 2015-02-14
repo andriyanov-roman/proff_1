@@ -2,18 +2,25 @@ package shop.main;
 
 import shop.goods.Good;
 import shop.goods.GoodUtility;
+import tests.reflection.MyAnnotation;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class View {
-    shop.validation.DataInput dataInput = new shop.validation.DataInput();
-    GoodUtility goodUtility = new GoodUtility();
+    public shop.validation.DataInput dataInput = new shop.validation.DataInput();
+    private GoodUtility goodUtility = new GoodUtility();
+    public int a = 23;
+    public String s = "leelle";
+    protected String lelel = "eqwqw12";
+    private short l = 9;
 
-    public View() throws IOException {
-        dataInput.enterLoginAndPassword();
-        start();
-    }
+
+//    public View() throws IOException {
+//        dataInput.enterLoginAndPassword();
+//        start();
+//
+//    }
 
     public void start() throws IOException {
 
@@ -28,7 +35,7 @@ public class View {
                     System.out.println("Exit");
                     break;
                 }
-                case "1": {
+                case "1":
                     System.out.println("Name: ");
                     good.setName(dataInput.getName());
 
@@ -51,24 +58,34 @@ public class View {
                     }
                     if (answerTwo.equalsIgnoreCase("n")) {
                         System.out.println("Goodbye!");
-                        break;
                     }
-                }
-                case "2": {
+                    break;
+
+                case "2":
                     goodUtility.printAllGoods();
                     break;
-                }
-                case "3": {
+
+                case "3":
                     goodUtility.makeZIP();
                     System.out.println("ZIP made");
                     break;
-                }
-                case "4": {
+
+                case "4":
                     dataInput.seeSorted();
                     break;
-                }
             }
+            break;
         }
+    }
+
+    protected void hxwe(int i) {
+    }
+
+    private int lelelel(double le, int le1, String name){
+        return 0;
+    }
+    private void ke(){
+
     }
 }
 

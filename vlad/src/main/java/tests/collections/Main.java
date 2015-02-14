@@ -7,18 +7,34 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.add(12);
-        linkedList.add(123);
-        linkedList.add(1232);
-        System.out.println(linkedList);
-        System.out.println(linkedList);
-        Map<String, Integer> map = new HashMap<>();
-        map.put("Vlad", 1);
-        map.put("Zhenya", 2);
-        map.put("Arten", 3);
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + " " + entry.getValue());
+
+        MyArrayList<String> myArrayList = new MyArrayList<>();
+        myArrayList.add("Lele");
+        myArrayList.add("Lele1");
+        myArrayList.add("Lele2");
+        myArrayList.add("Lele5");
+        myArrayList.add("Lele");
+        myArrayList.add("Lele1");
+        myArrayList.add("Lele2");
+        myArrayList.add("Lele5");
+        myArrayList.add("Lele");
+        myArrayList.add("Lele1");
+        myArrayList.add("Lele2");
+        myArrayList.add("Lele5");
+        myArrayList.add("Lele");
+
+        System.out.println(myArrayList.size());
+        System.out.println(myArrayList.get(2));
+
+        System.out.println(myArrayList.size());
+        myArrayList.remove("Lele");
+        System.out.println(myArrayList.size());
+
+        for(int i = 0; i < myArrayList.size(); i++){
+            System.out.println(myArrayList.get(i));
+            if(myArrayList.get(i) == myArrayList.get("Lele")){
+                System.out.println("!!");
+            }
         }
     }
 }
