@@ -44,8 +44,8 @@ public class View {
         System.out.println("Enter new goods PRESS    1   /   " + "      show already add PRESS   2");
 
         while (scanner.hasNext()) {
-            Goods goods = new Goods();
-            HashSet<Goods> goodses = new HashSet<>();
+            Good goods = new Good();
+            HashSet<Good> goodses = new HashSet<>();
             String input = scanner.nextLine();
             User user = new User();
 

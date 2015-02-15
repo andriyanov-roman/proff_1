@@ -1,6 +1,6 @@
 package shop;
 
-public class Goods {
+public class Good {
     String name;
     int amount;
     long barcode;
@@ -11,7 +11,7 @@ public class Goods {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Goods goods = (Goods) o;
+        Good goods = (Good) o;
 
         if (amount != goods.amount) return false;
         if (barcode != goods.barcode) return false;
@@ -35,6 +35,7 @@ public class Goods {
         return
                 name + " " + amount + " " + barcode + " " + type;
     }
+
 
     public String getType() {
         return type;
