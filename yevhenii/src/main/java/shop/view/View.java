@@ -2,8 +2,10 @@ package shop.view;
 
 import exceptions.Good;
 import exceptions.Validator;
+import shop.Shop;
 import shop.user.Authentification;
 import shop.user.User;
+import test_p.reflection_test.Anno;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,21 +19,21 @@ import java.util.Scanner;
  * Created by eugene on 01.02.15.
  */
 public class View {
-    Scanner scanner = new Scanner(System.in);
-    ArrayList<Good> goods = new ArrayList<>();
-    Authentification u = new Authentification();
-    Date date = new Date();
-
-
-    public View() {
-        doWork();
-    }
+    protected Scanner scanner = new Scanner(System.in);
+    public ArrayList<Good> goods = new ArrayList<>();
+    public Authentification u = new Authentification();
+    private Date date = new Date();
+    public int a = 4;
+    @Anno
+    public String x = "lelel";
+    private String f = "ololo";
+    protected String q = "qwerty";
 
 
     public void doWork() {
 
         System.out.println("1) Add new good" + "\n" +
-                /*"2) Make a daily report" + "\n"*/  "2) Archivation" + "\n" + "0) Exit");
+                /*"2) Make a daily report" + "\n"*/  "2) Archivation" + "\n" + "3) Sort by barcode" + "\n" + "0) Exit");
         String quest = scanner.next();
 
         while (quest != null) {
@@ -42,6 +44,12 @@ public class View {
                 break;
             } else if (quest.equals("2")) {
                 new ZipMaker();
+                System.out.println("OK!");
+                break;
+            } else if (quest.equals("3")) {
+
+
+                break;
             } else if ("1".equals(quest)) {
                 System.out.println("Enter name:");
                 String name = scanner.next();
@@ -80,15 +88,17 @@ public class View {
                         for (int i = 0; i < goods.size(); i++) {
                             out.println(goods.get(i).toString());
                         }
-                        out.println(date);
+
                         out.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     System.out.println("OK!");
+                    break;
                 }
-                doWork();
+
             }
         }
     }
+
 }

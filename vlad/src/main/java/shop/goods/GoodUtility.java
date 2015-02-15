@@ -19,6 +19,13 @@ public class GoodUtility {
         }
     }
 
+    public void printAllGoods(Set<Good> goods) {
+        for (Good g : goods) {
+            System.out.println("Name: " + g.getName() + ". Quantity: " + g.getQuantity()
+                    + ". Barcode: " + g.getBarcode() + ". Type: " + g.getType());
+        }
+    }
+
     public void printAllGoods() {
         for (Good g : getAllGoods()) {
             System.out.println("Name: " + g.getName() + ". Quantity: " + g.getQuantity()
@@ -84,5 +91,27 @@ public class GoodUtility {
         String[] pool = s.split("=");
         List<String> strings = Arrays.asList(pool);
         return strings;
+    }
+
+    public void getSortedByBarcode() {
+        Set<Good> goods = new TreeSet<>(new Comparator<Good>() {
+            @Override
+            public int compare(Good o1, Good o2) {
+                if (o1.getBarcode() > o2.getBarcode()) {
+                    return 1;
+                }
+                if (o1.getBarcode() < o2.getBarcode()) {
+                    return -1;
+                } else return 0;
+            }
+        });
+        goods.addAll(getAllGoods());
+        printAllGoods(goods);
+    }
+
+    public void getSortedByQuantity() {
+        Set<Good> goods = new TreeSet<>(Comparator.comparing(Good::getQuantity).thenComparing(Good::getBarcode));
+        goods.addAll(getAllGoods());
+        printAllGoods(goods);
     }
 }
