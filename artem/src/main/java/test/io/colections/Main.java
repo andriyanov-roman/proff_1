@@ -1,6 +1,8 @@
 package test.io.colections;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,9 +20,10 @@ public class Main {
         user1.setName("qwr");
         user1.setGender(true);
         user1.setSurname("qwrrq");
-        Set <User> users=new HashSet<>();
+        List<User> users=new LinkedList<>();
         users.add(user);
         users.add(user1);
+
         System.out.println(users.size());
     }
 }

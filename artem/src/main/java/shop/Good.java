@@ -41,6 +41,6 @@ public class Good {
         this.type = type;
     }
     public String toString() {
-        return "Good name: "+getName()+" Good number: "+getNumber()+" Good Barcode: "+getBarcode()+" Good Type: "+getType();
+        return getName()+":"+getNumber()+":"+getBarcode()+":"+getType();
     }
 }
