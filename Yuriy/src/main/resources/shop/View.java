@@ -44,7 +44,7 @@ public class View {
         System.out.println("Enter new goods PRESS    1   /   " + "      show already add PRESS   2");
 
         while (scanner.hasNext()) {
-            Good goods = new Good();
+            Good good = new Good();
             HashSet<Good> goodses = new HashSet<>();
             String input = scanner.nextLine();
             User user = new User();
@@ -54,27 +54,27 @@ public class View {
                 System.out.println("Enter name");
                 String goodName = scanner.nextLine();
                 if (validator.isGoodNameValid(goodName)) {
-                    goods.setName(goodName);
+                    good.setName(goodName);
                 }
                 System.out.println("Amount of good");
                 String goodAmount = scanner.nextLine();
                 if (validator.isGoodAmount(goodAmount)) {
-                    goods.setAmount(Integer.parseInt(goodAmount));
+                    good.setAmount(Integer.parseInt(goodAmount));
                 }
                 System.out.println("Barcode");
                 String barcode = scanner.nextLine();
                 if (validator.isGoodBarcode(barcode)) {
-                    goods.setBarcode(Long.parseLong(barcode));
+                    good.setBarcode(Long.parseLong(barcode));
                 }
                 System.out.println("Type");
                 String type = scanner.nextLine();
                 if (validator.isGoodType(type)) {
-                    goods.setType(type);
+                    good.setType(type);
                 }
 
-                GoodsModel.writeToFile(goods);
+                GoodsModel.writeToFile(good);
             }
-            goodses.add(goods);
+            goodses.add(good);
 
             if ("0".equals(scanner.nextLine())) {
                 System.out.println("Exit");
