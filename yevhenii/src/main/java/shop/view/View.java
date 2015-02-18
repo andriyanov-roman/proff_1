@@ -22,12 +22,10 @@ public class View {
     protected Scanner scanner = new Scanner(System.in);
     public ArrayList<Good> goods = new ArrayList<>();
     public Authentification u = new Authentification();
-    private Date date = new Date();
-    public int a = 4;
-    @Anno
-    public String x = "lelel";
-    private String f = "ololo";
-    protected String q = "qwerty";
+
+    public View(){
+        doWork();
+    }
 
 
     public void doWork() {
