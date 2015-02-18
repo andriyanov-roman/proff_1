@@ -1,13 +1,14 @@
 package shop;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class View {
     private Scanner scanner = new Scanner(System.in);
     private Validator validator = new Validator();
-
+    private GoodDAOImpl goodDAO = new GoodDAOImpl();
 
     public View() throws IOException {
         enterLogin();
@@ -71,8 +72,14 @@ public class View {
                 if (validator.isGoodType(type)) {
                     good.setType(type);
                 }
-
-                GoodsModel.writeToFile(good);
+                try {
+                    goodDAO.executeUpdate(good);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                //      GoodsModel.writeToFile(good);
             }
             goodses.add(good);
 
