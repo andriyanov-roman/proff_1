@@ -9,7 +9,6 @@ public class GoodDAOImpl implements GoodDAO {
 
     @Override
     public void executeUpdate(Good good) throws SQLException, ClassNotFoundException {
-
         try {
             String sqlUpdate = "insert into goods (good_name,good_qty,barcode,good_type) values (?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlUpdate);
@@ -22,6 +21,5 @@ public class GoodDAOImpl implements GoodDAO {
         } finally {
             connection.close();
         }
-
     }
 }

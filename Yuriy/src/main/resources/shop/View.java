@@ -9,7 +9,7 @@ public class View {
     private Scanner scanner = new Scanner(System.in);
     private Validator validator = new Validator();
     private GoodDAOImpl goodDAO = new GoodDAOImpl();
-
+    private PrintAll print = new PrintAll();
     public View() throws IOException {
         enterLogin();
     }
@@ -24,12 +24,13 @@ public class View {
                 }
             } catch (PasswordLoginExcp passwordLoginExcp) {
                 passwordLoginExcp.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-
         }
     }
 
-    public void enterPassword() throws IOException {
+    public void enterPassword() throws IOException, SQLException {
         System.out.println("Enter Password  ...");
         while (scanner.hasNext()) {
             String intut = scanner.nextLine();
@@ -37,11 +38,9 @@ public class View {
                 startProgram();
             }
         }
-
-
     }
 
-    public void startProgram() throws IOException {
+    public void startProgram() throws IOException, SQLException {
         System.out.println("Enter new goods PRESS    1   /   " + "      show already add PRESS   2");
 
         while (scanner.hasNext()) {
@@ -51,7 +50,6 @@ public class View {
             User user = new User();
 
             if ("1".equals(input)) {
-
                 System.out.println("Enter name");
                 String goodName = scanner.nextLine();
                 if (validator.isGoodNameValid(goodName)) {
@@ -79,18 +77,17 @@ public class View {
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                //      GoodsModel.writeToFile(good);
             }
             goodses.add(good);
+            if ("2".equals(scanner.nextLine())){
+                System.out.println("All goods list:");
+                print.PrintGoods();
 
+            }
             if ("0".equals(scanner.nextLine())) {
                 System.out.println("Exit");
                 break;
             }
-
-
         }
     }
-
-
 }
