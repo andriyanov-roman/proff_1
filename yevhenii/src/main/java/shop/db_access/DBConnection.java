@@ -19,19 +19,27 @@ public class DBConnection {
     }
 
     public static DBConnection getInstance() {
-
+        if (instance == null) {
+            instance = new DBConnection();
+        }
         return instance;
     }
 
-    public Connection createConnection() throws SQLException {
-        Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+    public static Connection createConnection() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         try {
             Class.forName(JDBC_DRIVER);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return connection;
-        }
+    }
+
 
 
 

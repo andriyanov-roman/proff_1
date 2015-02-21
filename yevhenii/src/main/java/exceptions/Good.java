@@ -9,6 +9,16 @@ public class Good {
     private long code;
     private String type;
 
+    public Good(String name, int quantity, long code, String type) {
+        this.name = name;
+        this.quantity = quantity;
+        this.code = code;
+        this.type = type;
+    }
+
+    public Good() {
+    }
+
     public String getName() {
         return name;
     }
@@ -43,6 +53,6 @@ public class Good {
 
     @Override
     public String toString() {
-        return name + ":" + quantity +":" + code + ":" + type;
+        return name + "|" + quantity +"|" + code + "|" + type;
     }
 }
