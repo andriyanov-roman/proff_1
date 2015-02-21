@@ -1,6 +1,6 @@
 package shop.goods;
 
-import shop.writer.GoodWriter;
+import shop.db_access.GoodDAO;
 
 import java.io.*;
 import java.util.*;
@@ -8,13 +8,13 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class GoodUtility {
-    GoodWriter writer = new GoodWriter();
+    GoodDAO goodDAO = new GoodDAO();
 
     public void addGood(Good good) {
-        if (getAllGoods().contains(good)) {
+        if (goodDAO.selectAll().contains(good)) {
             System.out.println("Good exists! Try again");
         } else {
-            writer.writeToFile(good, "vlad/src/main/java/files/shop");
+            goodDAO.executeUpdate(good);
             System.out.println("Good is valid");
         }
     }
@@ -27,7 +27,7 @@ public class GoodUtility {
     }
 
     public void printAllGoods() {
-        for (Good g : getAllGoods()) {
+        for (Good g : goodDAO.selectAll()) {
             System.out.println("Name: " + g.getName() + ". Quantity: " + g.getQuantity()
                     + ". Barcode: " + g.getBarcode() + ". Type: " + g.getType());
         }
@@ -62,37 +62,6 @@ public class GoodUtility {
         }
     }
 
-    private Set<Good> getAllGoods() {
-        Set<Good> goods = new HashSet<>();
-        List<String> data = null;
-        try {
-            data = readFromFile("/home/vladislav/proff_repos/proff_1/vlad/src/main/java/files/shop");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ArrayList<String[]> result = new ArrayList<>();
-        for (int i = 0; i < data.size(); i++) {
-            String[] pool = data.get(i).split(":");
-            result.add(pool);
-        }
-        for (int i = 0; i < result.size(); i++) {
-            goods.add(new Good(result.get(i)[0], Integer.parseInt(result.get(i)[1]), Integer.parseInt(result.get(i)[2]), result.get(i)[3]));
-        }
-        return goods;
-    }
-
-    private List<String> readFromFile(String path) throws FileNotFoundException {
-        File file = new File(path);
-        Scanner scanner = new Scanner(file);
-        String s = "";
-        while (scanner.hasNext()) {
-            s += scanner.next();
-        }
-        String[] pool = s.split("=");
-        List<String> strings = Arrays.asList(pool);
-        return strings;
-    }
-
     public void getSortedByBarcode() {
         Set<Good> goods = new TreeSet<>(new Comparator<Good>() {
             @Override
@@ -105,13 +74,15 @@ public class GoodUtility {
                 } else return 0;
             }
         });
-        goods.addAll(getAllGoods());
+        goods.addAll(goodDAO.selectAll());
         printAllGoods(goods);
     }
 
     public void getSortedByQuantity() {
         Set<Good> goods = new TreeSet<>(Comparator.comparing(Good::getQuantity).thenComparing(Good::getBarcode));
-        goods.addAll(getAllGoods());
+        goods.addAll(goodDAO.selectAll());
         printAllGoods(goods);
     }
+
+
 }

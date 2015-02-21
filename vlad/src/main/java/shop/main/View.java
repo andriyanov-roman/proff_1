@@ -1,31 +1,27 @@
 package shop.main;
 
+import shop.db_access.GoodDAO;
 import shop.goods.Good;
 import shop.goods.GoodUtility;
-import tests.reflection.MyAnnotation;
+import shop.supplier.Supplier;
+import shop.supplier.SupplierUtility;
 
 import java.io.*;
-import java.util.Scanner;
+
 
 public class View {
-    public shop.validation.DataInput dataInput = new shop.validation.DataInput();
+    private shop.validation.DataInput dataInput = new shop.validation.DataInput();
     private GoodUtility goodUtility = new GoodUtility();
-    public int a = 23;
-    public String s = "leelle";
-    protected String lelel = "eqwqw12";
-    private short l = 9;
+    private SupplierUtility supplierUtility = new SupplierUtility();
 
-
-//    public View() throws IOException {
-//        dataInput.enterLoginAndPassword();
-//        start();
-//
-//    }
+    public View() throws IOException {
+        dataInput.enterLoginAndPassword();
+        start();
+    }
 
     public void start() throws IOException {
-
-        System.out.println("Enter new good: 1 / See report: 2 / Make ZIP: 3 /" +
-                " Show sorted: 4");
+        System.out.println("Enter new good: 1 / Enter new supplier: 2 / See report: 3 / Make ZIP: 4 /" +
+                " Show sorted: 5");
 
         while (dataInput.scanner.hasNext()) {
             Good good = new Good();
@@ -62,31 +58,47 @@ public class View {
                     break;
 
                 case "2":
+                    Supplier supplier = new Supplier();
+                    System.out.println("Supplier name: ");
+                    supplier.setName(dataInput.getSuppName());
+
+                    System.out.println("Supplier good type: ");
+                    supplier.setGoodType(dataInput.getGoodType());
+
+                    System.out.println("Good ID: ");
+                    supplier.setGoodID(Integer.parseInt(dataInput.getGoodID()));
+
+                    supplierUtility.addSupplier(supplier);
+                    System.out.println("Continue: y/n");
+
+                    String answerThree = dataInput.scanner.next();
+
+                    if (answerThree.equalsIgnoreCase("y")) {
+                        start();
+                    }
+                    if (answerThree.equalsIgnoreCase("n")) {
+                        System.out.println("Goodbye!");
+                    }
+                    break;
+
+
+                case "3":
                     goodUtility.printAllGoods();
                     break;
 
-                case "3":
+                case "4":
                     goodUtility.makeZIP();
                     System.out.println("ZIP made");
                     break;
 
-                case "4":
+                case "5":
                     dataInput.seeSorted();
                     break;
             }
             break;
         }
     }
-
-    protected void hxwe(int i) {
-    }
-
-    private int lelelel(double le, int le1, String name){
-        return 0;
-    }
-    private void ke(){
-
-    }
 }
+
 
 
