@@ -12,7 +12,6 @@ public class GoodDAOImpl implements GoodDAO {
         try {
             String sqlUpdate = "insert into goods (good_name,good_qty,barcode,good_type) values (?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlUpdate);
-
             preparedStatement.setString(1, good.getName());
             preparedStatement.setInt(2, good.getAmount());
             preparedStatement.setLong(3, good.getBarcode());
@@ -22,4 +21,18 @@ public class GoodDAOImpl implements GoodDAO {
             connection.close();
         }
     }
+    public   void exeUpdateForUser(User user) throws SQLException, ClassNotFoundException{
+        try {
+            String sqlUpdate = "insert into users (user_login, user_password) values (?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlUpdate);
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.setInt(2, Integer.parseInt(user.getPasword()));
+            preparedStatement.execute();
+        } finally {
+            connection.close();
+        }
+    }
+
+
+
 }
