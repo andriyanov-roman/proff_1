@@ -3,7 +3,10 @@ package shop.view;
 import exceptions.Good;
 import exceptions.Validator;
 import shop.Shop;
+import shop.db_access.DAO;
+import shop.db_access.DBgood;
 import shop.user.Authentification;
+import shop.user.SAdding;
 import shop.user.User;
 import test_p.reflection_test.Anno;
 
@@ -11,6 +14,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -22,18 +26,16 @@ public class View {
     protected Scanner scanner = new Scanner(System.in);
     public ArrayList<Good> goods = new ArrayList<>();
     public Authentification u = new Authentification();
-    private Date date = new Date();
-    public int a = 4;
-    @Anno
-    public String x = "lelel";
-    private String f = "ololo";
-    protected String q = "qwerty";
+
+    public View() {
+        doWork();
+    }
 
 
     public void doWork() {
 
         System.out.println("1) Add new good" + "\n" +
-                /*"2) Make a daily report" + "\n"*/  "2) Archivation" + "\n" + "3) Sort by barcode" + "\n" + "0) Exit");
+                /*"2) Make a daily report" + "\n"*/  "2) Add zip" + "\n" + "3) Add supplier" + "\n" + "0) Exit");
         String quest = scanner.next();
 
         while (quest != null) {
@@ -47,8 +49,8 @@ public class View {
                 System.out.println("OK!");
                 break;
             } else if (quest.equals("3")) {
-
-
+                new SAdding();
+                question();
                 break;
             } else if ("1".equals(quest)) {
                 System.out.println("Enter name:");
@@ -72,33 +74,46 @@ public class View {
                     good.setType(type);
                 }
                 goods.add(good);
-
-                System.out.println("Add smth else?  Y/N ");
-                String res = scanner.next();
-                if (res.equalsIgnoreCase("Y")) {
-                    doWork();
-                } else if (res.equalsIgnoreCase("N")) {
-                    for (int i = 0; i < goods.size(); i++) {
-
-
-                    }
-                    try {
-
-                        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("/home/eugene/proff_repos/proff_1/yevhenii/src/main/java/shop/view/report", true)));
-                        for (int i = 0; i < goods.size(); i++) {
-                            out.println(goods.get(i).toString());
-                        }
-
-                        out.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println("OK!");
-                    break;
+                DBgood dBgood = new DBgood();
+                try {
+                    dBgood.executeUpdate(good);
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
+                question();
+
 
             }
         }
     }
 
-}
+    public void question() {
+
+        System.out.println("Add smth else?  Y/N ");
+        String res = scanner.next();
+        if (res.equalsIgnoreCase("Y")) {
+
+            doWork();
+
+
+        } else if (res.equalsIgnoreCase("N")) {
+
+
+                try {
+
+                    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("/home/eugene/proff_repos/proff_1/yevhenii/src/main/java/shop/view/report", true)));
+                    for (int i = 0; i < goods.size(); i++) {
+                        out.println(goods.get(i).toString());
+                    }
+
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("OK!");
+
+            }
+       }
+    }
+
+

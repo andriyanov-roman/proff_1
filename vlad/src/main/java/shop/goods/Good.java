@@ -16,7 +16,6 @@ public class Good {
         this.quantity = quantity;
         this.type = type;
     }
-//one constructor for creating goods using getters and setters, another for restoring goods to Set in getAllGoods()
 
     public long getBarcode() {
         return barcode;

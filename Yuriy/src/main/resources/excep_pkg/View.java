@@ -1,5 +1,9 @@
 package excep_pkg;
 
+import shop.GoodsModel;
+import shop.Validator;
+import shop.Good;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -15,7 +19,7 @@ public class View {
     public void startProgram() throws IOException {
         System.out.println("Enter goods" + "\n" + "Name of good");
         while (scanner.hasNext()) {
-            Goods goods = new Goods();
+            Good goods = new Good();
             String goodName = scanner.nextLine();
             if (validator.isGoodNameValid(goodName)) {
                 goods.setName(goodName);
