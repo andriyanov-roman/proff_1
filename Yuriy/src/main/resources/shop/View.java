@@ -10,46 +10,63 @@ public class View {
     private Validator validator = new Validator();
     private GoodDAOImpl goodDAO = new GoodDAOImpl();
     private PrintAll print = new PrintAll();
-    public View() throws IOException {
-        enterLogin();
+
+    public View() throws IOException, SQLException {
+        startProgram();
+    }
+
+    public void startProgram() throws IOException, SQLException {
+        System.out.println("You already exist user ? PRESS   '1'  / " + "  Create new User PRESS   '2'");
+        while (scanner.hasNext()) {
+            if ("1".equals(scanner.nextLine())) {
+                enterLogin();
+            }
+            if ("2".equals(scanner.nextLine())) {
+                createNewUser();
+            }
+            if ("0".equals(scanner.nextLine())) {
+                System.out.println("Exit");
+                System.exit(0);
+            }
+        }
     }
 
     public void enterLogin() throws IOException {
         System.out.println("Enter Login ...");
         while (scanner.hasNext()) {
             String intup = scanner.nextLine();
-            try {
-                if (validator.isLoginCorrect(intup)) {
-                    enterPassword();
-                }
-            } catch (PasswordLoginExcp passwordLoginExcp) {
-                passwordLoginExcp.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            if (validator.isLoginCorrect(intup)) {
+                enterPassword();
+            } else {
+                enterLogin();
             }
         }
     }
 
-    public void enterPassword() throws IOException, SQLException {
+    public void enterPassword() throws IOException {
         System.out.println("Enter Password  ...");
         while (scanner.hasNext()) {
-            String intut = scanner.nextLine();
-            if (validator.isPasswordCorrect(intut)) {
-                startProgram();
+            if (validator.isPasswordCorrect(scanner.nextLine())) {
+                try {
+                    enterGoods();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                enterPassword();
             }
         }
     }
 
-    public void startProgram() throws IOException, SQLException {
-        System.out.println("Enter new goods PRESS    1   /   " + "      show already add PRESS   2");
+    public void createNewUser() {
 
+    }
+
+    public void enterGoods() throws SQLException {
+        System.out.println("Add new good PRESS '1'   See list of goods PRESS '2' ");
+        Good good = new Good();
         while (scanner.hasNext()) {
-            Good good = new Good();
-            HashSet<Good> goodses = new HashSet<>();
-            String input = scanner.nextLine();
-            User user = new User();
-
-            if ("1".equals(input)) {
+            if ("1".equals(scanner.nextLine())) {
                 System.out.println("Enter name");
                 String goodName = scanner.nextLine();
                 if (validator.isGoodNameValid(goodName)) {
@@ -78,15 +95,9 @@ public class View {
                     e.printStackTrace();
                 }
             }
-            goodses.add(good);
-            if ("2".equals(scanner.nextLine())){
+            if ("2".equals(scanner.nextLine())) {
                 System.out.println("All goods list:");
                 print.PrintGoods();
-
-            }
-            if ("0".equals(scanner.nextLine())) {
-                System.out.println("Exit");
-                break;
             }
         }
     }
