@@ -1,24 +1,33 @@
 package shop;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Validator {
 
-    public boolean isLoginCorrect(String login) throws IOException, PasswordLoginExcp {
+    public boolean isLoginCorrect(String login) throws IOException {
         CreateUserList cu = new CreateUserList();
         ArrayList<User> users = cu.getUsers();
-
         for (int i = 0; i < users.size(); i++) {
             if (login.equals(users.get(i).getLogin())) {
                 return true;
             } else {
-                throw new PasswordLoginExcp("");
+                return false;
             }
         }
         return true;
     }
-    public boolean isPasswordCorrect(String password){
 
+    public boolean isPasswordCorrect(String password) throws IOException {
+        CreateUserList cu = new CreateUserList();
+        ArrayList<User> users = cu.getUsers();
+        for (int i = 0; i < users.size(); i++) {
+            if (password.equals(users.get(i).getPasword())) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         return true;
     }
