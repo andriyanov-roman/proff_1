@@ -11,11 +11,11 @@ public class View {
     private GoodDAOImpl goodDAO = new GoodDAOImpl();
     private PrintAll print = new PrintAll();
 
-    public View() throws IOException, SQLException {
+    public View() throws IOException, SQLException, ClassNotFoundException {
         startProgram();
     }
 
-    public void startProgram() throws IOException, SQLException {
+    public void startProgram() throws IOException, SQLException, ClassNotFoundException {
         System.out.println("You already exist user ? PRESS   '1'  / " + "  Create new User PRESS   '2'");
         while (scanner.hasNext()) {
             if ("1".equals(scanner.nextLine())) {
@@ -25,13 +25,13 @@ public class View {
                 createNewUser();
             }
             if ("0".equals(scanner.nextLine())) {
-                System.out.println("Exit");
                 System.exit(0);
+                System.out.println("Exit");
             }
         }
     }
 
-    public void enterLogin() throws IOException {
+    public void enterLogin() throws IOException, ClassNotFoundException {
         System.out.println("Enter Login ...");
         while (scanner.hasNext()) {
             String intup = scanner.nextLine();
@@ -43,7 +43,7 @@ public class View {
         }
     }
 
-    public void enterPassword() throws IOException {
+    public void enterPassword() throws IOException, ClassNotFoundException {
         System.out.println("Enter Password  ...");
         while (scanner.hasNext()) {
             if (validator.isPasswordCorrect(scanner.nextLine())) {
@@ -58,12 +58,33 @@ public class View {
         }
     }
 
-    public void createNewUser() {
+    public void createNewUser() throws SQLException, ClassNotFoundException, IOException {
+        System.out.println("Enter User login");
+        User user = new User();
+        while (scanner.hasNext()){
+            String login = scanner.next();
+            user.setLogin(login);
+            System.out.println("Enter User password");
+            String password = scanner.next();
+            user.setPasword(password);
+            if (validator.isUserAllrExist(user)){
+                System.out.println(" This user already exist");
+                startProgram();
+            }else {
+                goodDAO.exeUpdateForUser(user);
+                System.out.println("New user successfully added !!! ");
+                enterGoods();
+            }
+        }
+    }
+    public void createNewSupplier(){
 
     }
+    public void seeAllSupplier(){
 
-    public void enterGoods() throws SQLException {
-        System.out.println("Add new good PRESS '1'   See list of goods PRESS '2' ");
+    }
+    public void enterGoods() throws SQLException, ClassNotFoundException {
+        System.out.println("Add new good PRESS '1'   See list of goods PRESS '2'  Add new supplier PRESS '3'  See list of suppliers PRESS '4'");
         Good good = new Good();
         while (scanner.hasNext()) {
             if ("1".equals(scanner.nextLine())) {
@@ -87,17 +108,28 @@ public class View {
                 if (validator.isGoodType(type)) {
                     good.setType(type);
                 }
-                try {
+                if (validator.isGoodAllrExist(good)){
+                    System.out.println("This good already exist in goods list ");
+                    enterGoods();
+                }else {
                     goodDAO.executeUpdate(good);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
+                    System.out.println("Good added successfully !!!");
+                    enterGoods();
                 }
+
+
+
             }
             if ("2".equals(scanner.nextLine())) {
                 System.out.println("All goods list:");
                 print.PrintGoods();
+
+            if ("3".equals(scanner.nextLine())){
+                createNewSupplier();
+            }
+            if ("4".equals(scanner.nextLine())){
+                seeAllSupplier();
+            }
             }
         }
     }
