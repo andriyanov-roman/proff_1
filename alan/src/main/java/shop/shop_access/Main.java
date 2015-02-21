@@ -28,10 +28,10 @@ public class Main {
         }
         String sql_Two = "INSERT INTO goods (good_name,good_type,good_barcode) VALUES(?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql_Two);
-        Good good = new Good("Молочко", 122, 82333, "2");
+        Good good = new Good();
         preparedStatement.setString(1, good.getTitle());
         preparedStatement.setInt(2, good.getQuantity());
-        preparedStatement.setLong(,good.getTitle());
+        preparedStatement.setLong(3,good.getBarcode());
         preparedStatement.executeUpdate();
     }
 
