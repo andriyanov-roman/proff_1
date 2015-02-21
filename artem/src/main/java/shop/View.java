@@ -1,8 +1,11 @@
 package shop;
 
+import shop.dao.GoodDAO;
+import shop.dao.GoodsDAO;
 import test.io.reflection.NewAnnotation;
 
 import java.io.*;
+import java.sql.*;
 import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -13,10 +16,11 @@ public class View {
     private Scanner scanner = new Scanner(System.in);
     private Validator validator = new Validator();
     private ControlUser controlUser = new ControlUser();
+    private GoodsDAO goodsDAO=new GoodsDAO();
 
-//    public View() throws IOException {
-//        userControl();
-//    }
+    public View() throws IOException {
+        userControl();
+    }
 
     private void userControl() throws IOException {
         System.out.println("Enter Login and password");
@@ -29,11 +33,15 @@ public class View {
             } catch (MyException e) {
                 System.out.println(e);
                 userControl();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
 
-    private void startProgram() throws IOException {
+    private void startProgram() throws IOException, SQLException, ClassNotFoundException {
         System.out.println("See report/see sort report/add goods:1/2/3");
         while (scanner.hasNext()) {
             String answer = scanner.next();
@@ -59,6 +67,7 @@ public class View {
                 if ("0".equals(scanner.next())) {
                     System.out.println("Exit");
                     writeToFile(good, "/home/artem/IdeaProjects/zaebatiymagazin");
+                    goodsDAO.executeUpdate(good);
                     System.out.println("continue/zipreport/close:1/2/3");
                     String answerTwo = scanner.next();
                     if ("1".equals(answerTwo)) {
@@ -68,7 +77,10 @@ public class View {
                         createArchive("/home/artem/IdeaProjects/zaebatiymagazin");
                         break;
                     }
-                    else break;
+                    else{
+                        goodsDAO.readFromDB();
+                        break;
+                    }
                 }
             }
             else break;
@@ -201,5 +213,6 @@ public class View {
         }
         return strings;
     }
+
 
 }

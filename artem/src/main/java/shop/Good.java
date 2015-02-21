@@ -7,6 +7,7 @@ public class Good {
     String name;
     int number;
     long barcode;
+
     String type;
 
     public String getName() {
