@@ -16,8 +16,6 @@
         <module>alan</module>
         <module>yurii</module>
     </modules>
-
-
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -50,6 +48,13 @@
             <configuration>
                 <source>1.8</source>
                 <target>1.8</target>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+                <webXml>web/WEB-INF/web.xml</webXml>
             </configuration>
         </plugin>
     </plugins>
