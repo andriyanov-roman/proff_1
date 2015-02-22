@@ -57,7 +57,7 @@
                 <webXml>web/WEB-INF/web.xml</webXml>
                 <webResources>
                     <resource>
-                        <directory>web/WEB-INF</directory>
+                        <directory>web/</directory>
                     </resource>
                 </webResources>
             </configuration>
