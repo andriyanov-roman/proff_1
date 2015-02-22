@@ -1,6 +1,6 @@
 package excep_pkg;
 
-import shop.dbAccessAndOthersSamples.GoodsModel;
+
 import shop.Validator;
 import shop.Good;
 
@@ -44,7 +44,7 @@ public class View {
                 break;
             }
 
-            GoodsModel.writeToFile(goods);
+
         }
     }
 

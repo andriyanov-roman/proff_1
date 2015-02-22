@@ -11,6 +11,15 @@ import java.util.Set;
 public class Validator {
     UserDAOImpl userDAO = new UserDAOImpl();
     GoodDAOImpl goodDAO = new GoodDAOImpl();
+    SupplierDAOImpl supplierDAO = new SupplierDAOImpl();
+
+    public boolean isSupplierAllrExist(Supplier supplier) throws SQLException {
+        Set<Supplier> supplierSet = supplierDAO.selectFromSuppliers();
+        if (supplierSet.contains(supplier)){
+            return true;
+        }
+        return false;
+    }
 
     public boolean isUserAllrExist(User usery) throws SQLException {
         Set<User> userSet = userDAO.selectFromUsers();

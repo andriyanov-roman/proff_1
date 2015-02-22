@@ -2,6 +2,7 @@ package shop;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -10,6 +11,7 @@ public class View {
     private Validator validator = new Validator();
     private GoodDAOImpl goodDAO = new GoodDAOImpl();
     private UserDAOImpl userDAO = new UserDAOImpl();
+    private SupplierDAOImpl supplierDAO = new SupplierDAOImpl();
 
     public View() throws IOException, SQLException, ClassNotFoundException {
         startProgram();
@@ -48,7 +50,6 @@ public class View {
         }
     }
 
-
     public void createNewUser() throws SQLException, ClassNotFoundException, IOException {
         System.out.println("Enter User login");
         User user = new User();
@@ -59,23 +60,16 @@ public class View {
             String password = scanner.next();
             user.setPasword(password);
             if (validator.isUserAllrExist(user)) {
-                System.out.println(" This user already exist");
+                System.out.println(" This User already exist");
                 startProgram();
             } else {
                 userDAO.executeUpdate(user);
-                System.out.println("New user successfully added !!! ");
+                System.out.println("New User successfully added !!! ");
                 enterGoods();
             }
         }
     }
 
-    public void createNewSupplier() {
-
-    }
-
-    public void seeAllSupplier() {
-
-    }
 
     public void enterGoods() throws SQLException, ClassNotFoundException {
         System.out.println("Add new good PRESS '1'   See list of goods PRESS '2'  Add new supplier PRESS '3'  See list of suppliers PRESS '4'");
@@ -114,19 +108,52 @@ public class View {
             if ("2".equals(scanner.nextLine())) {
                 System.out.println("All goods list:");
                 printGoods();
+                enterGoods();
+            }
 
-                if ("3".equals(scanner.nextLine())) {
-                    createNewSupplier();
-                }
-                if ("4".equals(scanner.nextLine())) {
-                    seeAllSupplier();
-                }
+            if ("3".equals(scanner.nextLine())) {
+                createNewSupplier();
+            }
+            if ("4".equals(scanner.nextLine())) {
+                seeAllSupplier();
+            }
+            if ("0".equals(scanner.nextLine())) {
+                System.exit(0);
+                System.out.println("Exit");
             }
         }
     }
 
+
     public void printGoods() throws SQLException {
         Set<Good> goodSet = goodDAO.selectGood();
         System.out.println(goodSet.toString());
+    }
+
+    public void createNewSupplier() throws SQLException, ClassNotFoundException {
+        System.out.println("Enter Supplier name ");
+        Supplier supplier = new Supplier();
+        while (scanner.hasNext()) {
+            String name = scanner.next();
+            supplier.setName(name);
+            System.out.println("Enter goods type");
+            String type = scanner.next();
+            supplier.setType(type);
+
+            if (validator.isSupplierAllrExist(supplier)) {
+                System.out.println("This supplier already exist");
+                createNewSupplier();
+            } else {
+                supplierDAO.executeUpdate(supplier);
+                System.out.println("New supplier successfully added !!! ");
+                enterGoods();
+            }
+        }
+    }
+
+    public void seeAllSupplier() throws SQLException, ClassNotFoundException {
+        HashSet<Supplier> suppliers = supplierDAO.selectFromSuppliers();
+        System.out.println(suppliers.toString());
+        enterGoods();
     }
 }

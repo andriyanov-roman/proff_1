@@ -5,6 +5,7 @@ public class Supplier {
     String name;
     String type;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
