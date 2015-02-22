@@ -10,9 +10,10 @@ public class GoodsDAO implements GoodDAO {
     ConnectionToDB connectionToDB = ConnectionToDB.getDbCon();
     String sqlUpdate = "INSERT INTO shop.goods (good_name, good_number, barcode, good_type) VALUES (?,?,?,?)";
     String sqlRead = "SELECT * FROM shop.goods";
+
     @Override
     public void executeUpdate(Good good) throws ClassNotFoundException, SQLException {
-      PreparedStatement preparedStatement=connectionToDB.query(sqlUpdate);
+        PreparedStatement preparedStatement = connectionToDB.query(sqlUpdate);
         Good goods = good;
         preparedStatement.setString(1, goods.getName());
         preparedStatement.setInt(2, goods.getNumber());
@@ -20,9 +21,10 @@ public class GoodsDAO implements GoodDAO {
         preparedStatement.setString(4, goods.getType());
         preparedStatement.execute();
     }
+
     public void readFromDB() throws SQLException {
-        ResultSet resultSet=connectionToDB.querys(sqlRead);
-        while (resultSet.next()){
+        ResultSet resultSet = connectionToDB.querys(sqlRead);
+        while (resultSet.next()) {
             Good good = new Good();
             int id = resultSet.getInt("id");
             String name = resultSet.getString("good_name");

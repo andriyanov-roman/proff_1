@@ -10,11 +10,11 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>t_igushkina</module>
-        <module>Yuriy</module>
         <module>vlad</module>
         <module>artem</module>
         <module>yevhenii</module>
         <module>alan</module>
+        <module>yurii</module>
     </modules>
 
 

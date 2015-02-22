@@ -18,7 +18,7 @@ public class ReportCarsReverse implements IReportMaker<ReportCarsReverse.CarHelp
     ArrayList<CarHelper> cars = new ArrayList<>();
 
     @Override
-    public ArrayList<ReportCarsReverse.CarHelper> genereteReport() {
+    public ArrayList<CarHelper> genereteReport() {
         return null;
     }
 
