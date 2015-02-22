@@ -6,11 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PrintAll {
-    Connection connection = ConnectDB.getConnectoin();
 
     public void PrintGoods() throws SQLException {
         String sql = "SELECT * FROM  goods";
-        PreparedStatement statement = connection.prepareStatement(sql);
+        PreparedStatement statement = ConnectDB.getConnectoin().prepareStatement(sql);
         ResultSet result = statement.executeQuery(sql);
         while (result.next()){
             String name = result.getString("good_name");
