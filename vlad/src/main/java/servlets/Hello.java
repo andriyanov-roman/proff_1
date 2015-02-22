@@ -15,11 +15,10 @@ public class Hello extends HttpServlet {
 
     public void init() throws ServletException {
         // Do required initialization
-        message = "Hello";
+        message = "Hello  from Vlad!!!!";
     }
 
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Set response content type
         response.setContentType("text/html");
