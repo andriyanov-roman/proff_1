@@ -1,4 +1,4 @@
-//package shop.dbAccessAndOthersSamples;
+//package dbAccessAndOthersSamples;
 //
 //import shop.Good;
 //

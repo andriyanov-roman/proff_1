@@ -1,5 +1,7 @@
-package shop;
+package shop.DAOInterfaces;
 
+
+import shop.Good;
 
 import java.sql.SQLException;
 import java.util.HashSet;

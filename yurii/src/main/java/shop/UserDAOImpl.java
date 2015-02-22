@@ -1,10 +1,11 @@
 package shop;
 
+import shop.DAOInterfaces.UserDAO;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
-import java.util.Set;
 
 public class UserDAOImpl implements UserDAO {
     @Override
