@@ -10,13 +10,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
-    Connection connection = ConnectDB.getConnectoin();
-
 
        public boolean isUserAllrExist(User usery) throws SQLException {
         Set<User> userSet = new HashSet<>();
         String sql = "SELECT * FROM users";
-        PreparedStatement statement = connection.prepareStatement(sql);
+        PreparedStatement statement = ConnectDB.getConnectoin().prepareStatement(sql);
         ResultSet result = statement.executeQuery(sql);
 
         while (result.next()) {
@@ -36,7 +34,7 @@ public class Validator {
     public boolean isGoodAllrExist(Good goody) throws SQLException {
         Set<Good> goodSet = new HashSet<>();
         String sql = "SELECT * FROM  goods";
-        PreparedStatement statement = connection.prepareStatement(sql);
+        PreparedStatement statement = ConnectDB.getConnectoin().prepareStatement(sql);
         ResultSet result = statement.executeQuery(sql);
 
         while (result.next()) {

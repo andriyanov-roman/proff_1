@@ -10,6 +10,7 @@ public class View {
     private Validator validator = new Validator();
     private GoodDAOImpl goodDAO = new GoodDAOImpl();
     private PrintAll print = new PrintAll();
+    private UserDAOImpl userDAO = new UserDAOImpl();
 
     public View() throws IOException, SQLException, ClassNotFoundException {
         startProgram();
@@ -71,7 +72,7 @@ public class View {
                 System.out.println(" This user already exist");
                 startProgram();
             }else {
-                goodDAO.exeUpdateForUser(user);
+               userDAO.executeUpdate(user);
                 System.out.println("New user successfully added !!! ");
                 enterGoods();
             }
