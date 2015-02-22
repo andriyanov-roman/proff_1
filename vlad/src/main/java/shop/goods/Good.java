@@ -51,10 +51,8 @@ public class Good {
 
     @Override
     public String toString() {
-        return name +
-                ":" + quantity +
-                ":" + barcode +
-                ":" + type + "=";
+        return "Name: " + name + " Quantity: " + quantity + " Barcode: " + barcode + " Type: " + type;
+
     }
 
     @Override
