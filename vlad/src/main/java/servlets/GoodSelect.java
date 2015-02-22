@@ -15,13 +15,6 @@ public class GoodSelect extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<String> types = new GoodsHandler().getTypes(request.getParameter("taste"));
-        request.setAttribute("types", types);
-        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-        view.forward(request, response);
-    }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<String> types = new GoodsHandler().getTypes(request.getParameter("taste"));

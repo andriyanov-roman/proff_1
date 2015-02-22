@@ -8,14 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by Tatty on 21.02.2015.
+ * Created by Алан on 22.02.15.
  */
 public class Hello extends HttpServlet {
     private String message;
 
     public void init() throws ServletException {
         // Do required initialization
-        message = "Hello  from yevhenii!!!!";
+        message = "Hello Alan";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,3 +32,4 @@ public class Hello extends HttpServlet {
         // do nothing.
     }
 }
+

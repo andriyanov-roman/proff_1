@@ -1,4 +1,8 @@
-package servlets;
+package servelets;
+
+import shop.Good;
+import shop.dao.GoodsDAO;
+import shop.dbaccess.ConnectionToDB;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -6,16 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
- * Created by Tatty on 21.02.2015.
+ * Created by artem on 22.02.15.
  */
 public class Hello extends HttpServlet {
-    private String message;
+    ArrayList<Good> goods;
 
     public void init() throws ServletException {
-        // Do required initialization
-        message = "Hello  from yevhenii!!!!";
+        try {
+            goods = new GoodsDAO().readFromDB();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,7 +35,7 @@ public class Hello extends HttpServlet {
 
         // Actual logic goes here.
         PrintWriter out = response.getWriter();
-        out.println("<h1>" + message + "</h1>");
+        out.println("<h1>" + goods.toString() + "</h1>");
     }
 
     public void destroy() {
