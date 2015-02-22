@@ -55,6 +55,11 @@
             <artifactId>maven-war-plugin</artifactId>
             <configuration>
                 <webXml>web/WEB-INF/web.xml</webXml>
+                <webResources>
+                    <resource>
+                        <directory>web/WEB-INF</directory>
+                    </resource>
+                </webResources>
             </configuration>
         </plugin>
     </plugins>
