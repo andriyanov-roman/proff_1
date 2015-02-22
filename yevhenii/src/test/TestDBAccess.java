@@ -20,7 +20,7 @@ public class TestDBAccess {
    public static Connection connection = null;
 
     @Before
-    @Test(timeout = 45)
+    @Test(timeout = 44)
     public void getDBconnect() throws SQLException, ClassNotFoundException {
         Class.forName(JDBC_DRIVER);
         connection = DriverManager.getConnection(DB_URL, USER, PASS);
