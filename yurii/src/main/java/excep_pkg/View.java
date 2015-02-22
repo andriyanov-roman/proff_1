@@ -1,6 +1,6 @@
 package excep_pkg;
 
-import shop.GoodsModel;
+import shop.dbAccessAndOthersSamples.GoodsModel;
 import shop.Validator;
 import shop.Good;
 
@@ -26,17 +26,17 @@ public class View {
             }
             System.out.println("Amount of good");
             String goodAmount = scanner.nextLine();
-            if (validator.isGoodAmount(goodAmount)) {
+            if (validator.isGoodAmountValid(goodAmount)) {
                 goods.setAmount(Integer.parseInt(goodAmount));
             }
             System.out.println("Barcode");
             String barcode = scanner.nextLine();
-            if (validator.isGoodBarcode(barcode)) {
+            if (validator.isGoodBarcodeValid(barcode)) {
                 goods.setBarcode(Long.parseLong(barcode));
             }
             System.out.println("Type");
             String type = scanner.nextLine();
-            if (validator.isGoodType(type)) {
+            if (validator.isGoodTypeValid(type)) {
                 goods.setType(type);
             }
             if ("0".equals(scanner.nextLine())) {

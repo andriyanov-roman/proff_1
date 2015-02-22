@@ -27,7 +27,7 @@ public class CreateUserList {
         public static final int PASSWORD = 1;
 
         public void getUsersFrom() throws IOException {
-            ArrayList<String[]> lines = getStrings("Yuriy\\src\\main\\resources\\shop\\UsersList.txt");
+            ArrayList<String[]> lines = getStrings("yurii\\src\\main\\java\\shop\\UsersList.txt");
             for (int i = 0; i < lines.size(); i++) {
                 User u = new User();
                 u.setLogin(lines.get(i)[LOGIN]);

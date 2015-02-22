@@ -1,4 +1,6 @@
-package shop;
+package shop.dbAccessAndOthersSamples;
+
+import shop.Good;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

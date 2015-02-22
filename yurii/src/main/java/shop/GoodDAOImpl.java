@@ -24,22 +24,26 @@ public class GoodDAOImpl implements GoodDAO {
 
     @Override
     public Set<Good> selectGood() throws SQLException {
-        Set<Good> goodSet = new HashSet<>();
-        String sql = "SELECT * FROM  goods";
-        PreparedStatement statement = ConnectDB.getConnectoin().prepareStatement(sql);
-        ResultSet result = statement.executeQuery(sql);
-        while (result.next()) {
-            String name = result.getString("good_name");
-            int qty = result.getInt("good_qty");
-            int barcode = result.getInt("barcode");
-            String type = result.getString("good_type");
-            Good good = new Good();
-            good.setName(name);
-            good.setAmount(qty);
-            good.setBarcode(barcode);
-            good.setType(type);
-            goodSet.add(good);
+        try {
+            Set<Good> goodSet = new HashSet<>();
+            String sql = "SELECT * FROM  goods";
+            PreparedStatement statement = ConnectDB.getConnectoin().prepareStatement(sql);
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                String name = result.getString("good_name");
+                int qty = result.getInt("good_qty");
+                int barcode = result.getInt("barcode");
+                String type = result.getString("good_type");
+                Good good = new Good();
+                good.setName(name);
+                good.setAmount(qty);
+                good.setBarcode(barcode);
+                good.setType(type);
+                goodSet.add(good);
+            }
+            return goodSet;
+        } finally {
+            ConnectDB.getConnectoin().close();
         }
-        return goodSet;
     }
 }

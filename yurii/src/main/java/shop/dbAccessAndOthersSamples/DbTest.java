@@ -1,4 +1,4 @@
-package shop.dbAccess;//package shop.dbAccess;
+package shop.dbAccessAndOthersSamples;//package shop.dbAccessAndOthersSamples;
 //
 //import shop.Good;
 //import java.sql.*;

@@ -1,12 +1,11 @@
 package shop;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.Set;
 
-/**
- * Created by Таня on 22.02.2015.
- */
 public class UserDAOImpl implements UserDAO {
     @Override
     public void executeUpdate(User user) throws SQLException, ClassNotFoundException {
@@ -22,8 +21,25 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public HashSet selectUsers() {
-        return null;
+    public HashSet<User> selectFromUsers() throws SQLException {
+        try {
+            HashSet<User> usersSet = new HashSet<>();
+            String sql = "SELECT * FROM users";
+            PreparedStatement statement = ConnectDB.getConnectoin().prepareStatement(sql);
+            ResultSet resalt = statement.executeQuery(sql);
+
+            while (resalt.next()) {
+                String login = resalt.getString("user_login");
+                String password = resalt.getString("user_password");
+                User user = new User();
+                user.setLogin(login);
+                user.setPasword(password);
+                usersSet.add(user);
+            }
+            return usersSet;
+        } finally {
+            ConnectDB.getConnectoin().close();
+        }
     }
 }
 
