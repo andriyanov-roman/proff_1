@@ -25,4 +25,14 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
+<servlet>
+    <servlet-name>DBConnect</servlet-name>
+    <servlet-class>servlets.DBConnect</servlet-class>
+</servlet>
+
+    <servlet-mapping>
+        <servlet-name>DBConnect</servlet-name>
+        <url-pattern>/select</url-pattern>
+    </servlet-mapping>
+
 </web-app>
