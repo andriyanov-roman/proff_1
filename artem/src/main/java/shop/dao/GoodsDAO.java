@@ -4,6 +4,7 @@ import shop.Good;
 import shop.dbaccess.ConnectionToDB;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class GoodsDAO implements GoodDAO {
@@ -22,8 +23,9 @@ public class GoodsDAO implements GoodDAO {
         preparedStatement.execute();
     }
 
-    public void readFromDB() throws SQLException {
+    public ArrayList<Good> readFromDB() throws SQLException {
         ResultSet resultSet = connectionToDB.querys(sqlRead);
+        ArrayList <Good> goods=new ArrayList<>();
         while (resultSet.next()) {
             Good good = new Good();
             int id = resultSet.getInt("id");
@@ -35,8 +37,10 @@ public class GoodsDAO implements GoodDAO {
             good.setBarcode(barcode);
             good.setType(type);
             good.setName(name);
-            System.out.println(id + "=" + good.toString());
+            goods.add(good);
+            //System.out.println(id + "=" + good.toString());
         }
+        return goods;
     }
 }
 

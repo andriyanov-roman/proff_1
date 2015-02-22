@@ -7,7 +7,7 @@ public class DBAccessProcessor {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String URL = "jdbc:mysql://localhost:3306/shop";
     static final String LOGIN = "root";
-    static final String PASSWORD = "32уц421ццум";
+    static final String PASSWORD = "";
 
     private static Connection connection;
 
