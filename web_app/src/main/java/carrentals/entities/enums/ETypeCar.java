@@ -1,0 +1,17 @@
+package carrentals.entities.enums;
+
+public enum ETypeCar {
+	SEDAN, 
+	STATIONWAGON, 
+	HATCHBACK,
+	LIMOUSINE,
+	MINIVAN,
+	HARDTOP,
+	COUPE,
+	LIFTBACK,
+	UNIVERSAL,
+	CABRIOLET,
+	ROADSTER,
+	PICKUP,
+	VAN;
+}
