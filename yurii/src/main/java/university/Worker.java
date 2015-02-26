@@ -4,11 +4,40 @@ package university;
 import java.util.ArrayList;
 
 public class Worker {
-
     public String name;
     public String sex;
     public int experience;
     public double salary;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Worker worker = (Worker) o;
+
+        if (experience != worker.experience) return false;
+        if (Double.compare(worker.salary, salary) != 0) return false;
+        if (name != null ? !name.equals(worker.name) : worker.name != null) return false;
+        if (sex != null ? !sex.equals(worker.sex) : worker.sex != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (sex != null ? sex.hashCode() : 0);
+        result = 31 * result + experience;
+        temp = Double.doubleToLongBits(salary);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+
 
     public String toString() {
         return getClass().getSimpleName() + ": " + name + ":" + salary;

@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectDB {
+
     private static ConnectDB instance = new ConnectDB();
 
     private ConnectDB() {
