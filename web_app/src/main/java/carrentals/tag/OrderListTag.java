@@ -17,17 +17,15 @@ public class OrderListTag extends TagSupport {
     }
 
     public int doStartTag() throws JspException {
-
-        LocaleConfig langConfig = LocaleConfig.getInstance();
-        String order = langConfig.getText(langConfig.ORDER);
-        String confirm = langConfig.getText(langConfig.ORDER_CONFIRM);
-        String reject = langConfig.getText(langConfig.ORDER_REJECT);
-        String executed = langConfig.getText(langConfig.ORDER_EXECUTED);
-        String notexecuted = langConfig.getText(langConfig.ORDER_NOTEXECUTED);
-        String description = langConfig.getText(langConfig.ORDER_DESCRIPTION);
-        String damage = langConfig.getText(langConfig.ORDER_DAMAGE);
-        String save = langConfig.getText(langConfig.ORDER_SAVE);
-        String state = langConfig.getText(langConfig.ORDER_STATE);
+        String order = LocaleConfig.ORDER;
+        String confirm = LocaleConfig.ORDER_CONFIRM;
+        String reject = LocaleConfig.ORDER_REJECT;
+        String executed = LocaleConfig.ORDER_EXECUTED;
+        String notexecuted = LocaleConfig.ORDER_NOTEXECUTED;
+        String description = LocaleConfig.ORDER_DESCRIPTION;
+        String damage = LocaleConfig.ORDER_DAMAGE;
+        String save = LocaleConfig.ORDER_SAVE;
+        String state = LocaleConfig.ORDER_STATE;
 
         StringBuilder stringFormat = new StringBuilder();
         Formatter formatter = new Formatter(stringFormat);

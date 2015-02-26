@@ -23,18 +23,17 @@ public class ProfileTag extends TagSupport {
 
     public int doStartTag() throws JspException {
 
-        LocaleConfig langConfig = LocaleConfig.getInstance();
-        String login = langConfig.getText(LocaleConfig.USER_LOGIN);
-        String password = langConfig.getText(LocaleConfig.USER_PASSWORD);
-        String name = langConfig.getText(LocaleConfig.USER_NAME);
-        String surnmae = langConfig.getText(LocaleConfig.USER_SURNAME);
-        String middlename = langConfig.getText(LocaleConfig.USER_MIDDLENAME);
-        String email = langConfig.getText(LocaleConfig.USER_EMAIL);
-        String birthday = langConfig.getText(LocaleConfig.CLIENT_BIRTHDAY);
-        String passportseries = langConfig.getText(LocaleConfig.CLIENT_PASSPORTSERIES);
-        String passportnumber = langConfig.getText(LocaleConfig.CLIENT_PASSPORTNUMBER);
-        String phonenumber = langConfig.getText(LocaleConfig.CLIENT_PHONENUMBER);
-        String updateprofile = langConfig.getText(LocaleConfig.UPDATE_PROFILE);
+        String login = LocaleConfig.USER_LOGIN;
+        String password = LocaleConfig.USER_PASSWORD;
+        String name = LocaleConfig.USER_NAME;
+        String surnmae = LocaleConfig.USER_SURNAME;
+        String middlename = LocaleConfig.USER_MIDDLENAME;
+        String email = LocaleConfig.USER_EMAIL;
+        String birthday = LocaleConfig.CLIENT_BIRTHDAY;
+        String passportseries = LocaleConfig.CLIENT_PASSPORTSERIES;
+        String passportnumber = LocaleConfig.CLIENT_PASSPORTNUMBER;
+        String phonenumber = LocaleConfig.CLIENT_PHONENUMBER;
+        String updateprofile = LocaleConfig.UPDATE_PROFILE;
 
         StringBuilder stringFormat = new StringBuilder();
         Formatter formatter = new Formatter(stringFormat);

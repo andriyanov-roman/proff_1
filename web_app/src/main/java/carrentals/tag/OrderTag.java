@@ -36,17 +36,15 @@ public class OrderTag extends TagSupport {
     }
 
     public int doStartTag() throws JspException {
-
-        LocaleConfig langConfig = LocaleConfig.getInstance();
-        String placeGet = langConfig.getText(LocaleConfig.ORDER_PLACE_GET);
-        String placeReturn = langConfig.getText(LocaleConfig.ORDER_PLACE_RETURN);
-        String dateGet = langConfig.getText(LocaleConfig.ORDER_DATE_GET);
-        String dateReturn = langConfig.getText(LocaleConfig.ORDER_DATE_RETURN);
-        String makeorder = langConfig.getText(LocaleConfig.ORDER_MAKE);
-        String birthday = langConfig.getText(LocaleConfig.CLIENT_BIRTHDAY);
-        String passportseries = langConfig.getText(LocaleConfig.CLIENT_PASSPORTSERIES);
-        String passportnumber = langConfig.getText(LocaleConfig.CLIENT_PASSPORTNUMBER);
-        String phonenumber = langConfig.getText(LocaleConfig.CLIENT_PHONENUMBER);
+        String placeGet = LocaleConfig.ORDER_PLACE_GET;
+        String placeReturn = LocaleConfig.ORDER_PLACE_RETURN;
+        String dateGet = LocaleConfig.ORDER_DATE_GET;
+        String dateReturn = LocaleConfig.ORDER_DATE_RETURN;
+        String makeorder = LocaleConfig.ORDER_MAKE;
+        String birthday = LocaleConfig.CLIENT_BIRTHDAY;
+        String passportseries = LocaleConfig.CLIENT_PASSPORTSERIES;
+        String passportnumber = LocaleConfig.CLIENT_PASSPORTNUMBER;
+        String phonenumber = LocaleConfig.CLIENT_PHONENUMBER;
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFormat.format(new Date());
