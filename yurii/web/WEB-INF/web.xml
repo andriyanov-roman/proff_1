@@ -11,7 +11,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginPasswordServlet</servlet-name>
-        <url-pattern>LoginPasswordServlet</url-pattern>
+        <url-pattern>/LoginPasswordServlet</url-pattern>
     </servlet-mapping>
 
 

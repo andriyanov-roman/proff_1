@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <body>
 <div class="frm">
-    <form name="loginForm" method="post" action="login">
+    <form name="loginForm" method="post" action="LoginPasswordServlet">
         Login:<input type="text" name="login"/> <br/>
         Password:<input type="password" name="password"/> <br/>
 
