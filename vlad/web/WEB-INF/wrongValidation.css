@@ -4,10 +4,9 @@ body {
     text-transform: uppercase;
 }
 .main{
-
     opacity: .9;
     width: 350px;
-    height: 170px;
+    height: 190px;
     position: relative;
     top:0;
     bottom: 50px;
