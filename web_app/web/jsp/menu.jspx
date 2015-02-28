@@ -11,16 +11,26 @@
     <body>
     <div id="menu">
         <ul class="menu">
-            <li class="menu"><a href="carrentals?command=search"><fmt:message key="MENU_SEARCH"/></a></li>
-            <li class="menu"><a href="carrentals?command=cars"><fmt:message key="MENU_CARS"/></a></li>
+            <li class="menu">
+                <a href="carrentals?command=search">
+                    <fmt:message key="MENU_SEARCH"/></a></li>
+            <li class="menu">
+                <a href="carrentals?command=cars">
+                    <fmt:message key="MENU_CARS"/></a></li>
             <c:choose>
                 <c:when test="${sessionScope.role=='admin'}">
-                    <li class="menu"><a href="carrentals?command=orderlist"><fmt:message key="MENU_LIST_OF_ORDER"/></a>
+                    <li class="menu">
+                        <a href="carrentals?command=orderlist">
+                            <fmt:message key="MENU_LIST_OF_ORDER"/></a>
                     </li>
-                    <li class="menu"><a href="carrentals?command=profile"><fmt:message key="MENU_MY_PROFILE"/></a></li>
+                    <li class="menu">
+                        <a href="carrentals?command=profile">
+                            <fmt:message key="MENU_MY_PROFILE"/></a></li>
                 </c:when>
                 <c:when test="${sessionScope.role=='user'}">
-                    <li class="menu"><a href="carrentals?command=profile"><fmt:message key="MENU_MY_PROFILE"/></a></li>
+                    <li class="menu">
+                        <a href="carrentals?command=profile">
+                            <fmt:message key="MENU_MY_PROFILE"/></a></li>
                 </c:when>
             </c:choose>
         </ul>
