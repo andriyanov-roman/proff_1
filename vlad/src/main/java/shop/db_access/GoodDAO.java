@@ -10,8 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GoodDAO implements GenericDAO<Good> {
-    static final String goodUpdate = "insert into shop.goods (good_name, quantity, good_barcode, good_type) values (?,?,?,?)";
-    static final String selectAll = "select * from shop.goods";
+    public static final String goodUpdate = "insert into shop.goods (good_name, quantity, good_barcode, good_type) values (?,?,?,?)";
+    public static final String selectAll = "select * from shop.goods";
 
     @Override
     public void executeUpdate(Good good) {
