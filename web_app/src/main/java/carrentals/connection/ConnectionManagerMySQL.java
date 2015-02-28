@@ -11,10 +11,10 @@ public class ConnectionManagerMySQL {
 	
 	private static ConnectionManagerMySQL instance;
 	private static Connection connection;
-	private static final String DB_DRIVER = "org.gjt.mm.mysql.Driver";
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/carrentals";
-	private static final String DB_USER = "root";
-	private static final String DB_PASSWORD = "root";
+    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://localhost:3306/shop";
+    private static final String LOGIN = "root";
+    private static final String PASSWORD = "";
 
 	private ConnectionManagerMySQL() {
 		logger.info("Create new instance. Resource bundle complete");
@@ -29,9 +29,9 @@ public class ConnectionManagerMySQL {
 
 	public  synchronized Connection getConnection() {
 		try {
-			Class.forName(DB_DRIVER);
+			Class.forName(JDBC_DRIVER);
 			logger.info("Registered JDBC driver ");
-			connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+			connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
 			logger.info("Create new coonection");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

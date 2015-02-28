@@ -25,15 +25,14 @@
         <url-pattern>/start</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>loginServlet</servlet-name>
-        <servlet-class>shop_servlets.LoginServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>loginServlet</servlet-name>
+    <filter>
+        <filter-name>login</filter-name>
+        <filter-class>shop_servlets.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>login</filter-name>
         <url-pattern>/login</url-pattern>
-    </servlet-mapping>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>menuServlet</servlet-name>
@@ -53,6 +52,16 @@
     <servlet-mapping>
         <servlet-name>addGood</servlet-name>
         <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registerUser</servlet-name>
+        <servlet-class>shop_servlets.RegisterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>registerUser</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
 </web-app>

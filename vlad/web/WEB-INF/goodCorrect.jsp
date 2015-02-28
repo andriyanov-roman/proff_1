@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<title>Incorrect</title>
+<title>Correct</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="goodCorrect.css">
 <body>

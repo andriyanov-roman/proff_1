@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 public class StartPageServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("startPage.jsp");
         view.forward(request, response);
     }
 }
