@@ -14,7 +14,7 @@ public class ConnectionManagerMySQL {
 	private static final String DB_DRIVER = "org.gjt.mm.mysql.Driver";
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/carrentals";
 	private static final String DB_USER = "root";
-	private static final String DB_PASSWORD = "root";
+	private static final String DB_PASSWORD = "yurceh12";
 
 	private ConnectionManagerMySQL() {
 		logger.info("Create new instance. Resource bundle complete");
