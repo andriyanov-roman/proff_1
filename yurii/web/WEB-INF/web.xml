@@ -14,7 +14,6 @@
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
         <servlet-name>UserMenuServlet</servlet-name>
         <servlet-class>servlets.UserMenuServlet</servlet-class>
@@ -32,7 +31,6 @@
         <servlet-name>LoginPasswordServlet</servlet-name>
         <url-pattern>/LoginPasswordServlet</url-pattern>
     </servlet-mapping>
-
 
     <servlet>
         <servlet-name>ShopTmp</servlet-name>
