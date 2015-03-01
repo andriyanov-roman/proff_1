@@ -9,6 +9,16 @@ public class Good {
     private long code;
     private String type;
 
+    public Good(String string, int anInt, int anInt1, String string1) {
+        this.name = string;
+        this.quantity = anInt;
+        this.code = anInt1;
+        this.type = string;
+    }
+
+    public Good() {
+    }
+
     public String getName() {
         return name;
     }
