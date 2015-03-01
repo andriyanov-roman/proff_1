@@ -20,11 +20,6 @@ public class LoginPasswordServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         User u = new User();
@@ -42,5 +37,4 @@ public class LoginPasswordServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
 }
