@@ -27,10 +27,10 @@ public class LoginPasswordServlet extends HttpServlet {
         u.setPasword(password);
         try {
             if (validator.isLoginAndPasswordCorrect(u)) {
-                RequestDispatcher view = request.getRequestDispatcher("");
+                RequestDispatcher view = request.getRequestDispatcher("userMenu.jsp");
                 view.forward(request, response);
             } else {
-                RequestDispatcher view = request.getRequestDispatcher("");
+                RequestDispatcher view = request.getRequestDispatcher("loginPassword.jsp");
                 view.forward(request, response);
             }
         } catch (SQLException e) {
