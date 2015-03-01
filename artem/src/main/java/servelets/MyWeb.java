@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by artem on 22.02.15.
  */
-public class Hello extends HttpServlet {
+public class MyWeb extends HttpServlet {
     ArrayList<Good> goods;
 
     public void init() throws ServletException {

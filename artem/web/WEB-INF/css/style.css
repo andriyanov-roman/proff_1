@@ -1,0 +1,46 @@
+.button {
+    color: #FFF;
+    background:  url(http://www.scri8e.com/black.gif) 0 -32px;
+    padding: 8px 0 0 35px;
+
+}
+
+.button:hover {
+    color: #FFF;
+    background:  green 0 -32px;
+    padding: 8px 0 0 35px;
+}
+
+body {
+    background: #fff;
+    font: 12px Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.menu {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 28px;
+}
+
+.error {
+    color: red;
+    font-family: Arial;
+    border: 4px double black;
+}
+
+.correct {
+    color: blue;
+    font-family: Arial;
+}
+
+.txt {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 12px;
+    color: blue;
+    padding: 0 12px;
+}
+/*.entered{*/
+
+/*}*/
