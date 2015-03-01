@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 public class LoginPasswordServlet extends HttpServlet {
@@ -19,6 +20,11 @@ public class LoginPasswordServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         User u = new User();
@@ -35,8 +41,6 @@ public class LoginPasswordServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
 }
