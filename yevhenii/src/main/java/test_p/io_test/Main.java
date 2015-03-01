@@ -1,6 +1,6 @@
 package test_p.io_test;
 
-import exceptions.User;
+
 
 import javax.sound.sampled.AudioInputStream;
 import java.io.*;
@@ -31,8 +31,8 @@ public class Main {
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
-    }
-    public static void main(String[] args) {
+    }}
+   /* public static void main(String[] args) {
    User user = new User();
         user.setName("Artem");
         user.setSecondName("Balandin");
@@ -57,4 +57,4 @@ public class Main {
         }
 
 }
-}
+}*/

@@ -1,5 +1,6 @@
-import exceptions.Good;
+
 import org.junit.Test;
+import shop.Good;
 import shop.db_access.DBConnection;
 
 import java.sql.Connection;
