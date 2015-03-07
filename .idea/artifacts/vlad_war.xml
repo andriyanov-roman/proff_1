@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="vlad:war">
+    <output-path>$PROJECT_DIR$/vlad/target</output-path>
+    <root id="archive" name="vlad_shop.war">
+      <element id="artifact" artifact-name="vlad:war exploded" />
+    </root>
+  </artifact>
+</component>

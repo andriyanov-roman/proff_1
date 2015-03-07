@@ -1,6 +1,7 @@
-import exceptions.Good;
+
 import org.junit.Test;
 import org.junit.rules.Timeout;
+import shop.Good;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

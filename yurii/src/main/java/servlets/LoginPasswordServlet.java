@@ -20,11 +20,6 @@ public class LoginPasswordServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         User u = new User();
@@ -32,15 +27,14 @@ public class LoginPasswordServlet extends HttpServlet {
         u.setPasword(password);
         try {
             if (validator.isLoginAndPasswordCorrect(u)) {
-                RequestDispatcher view = request.getRequestDispatcher("");
+                RequestDispatcher view = request.getRequestDispatcher("userMenu.jsp");
                 view.forward(request, response);
             } else {
-                RequestDispatcher view = request.getRequestDispatcher("");
+                RequestDispatcher view = request.getRequestDispatcher("loginPassword.jsp");
                 view.forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }
