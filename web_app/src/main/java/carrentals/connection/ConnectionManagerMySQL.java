@@ -12,9 +12,9 @@ public class ConnectionManagerMySQL {
 	private static ConnectionManagerMySQL instance;
 	private static Connection connection;
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/shop";
+    private static final String URL = "jdbc:mysql://localhost:3306/carrentals";
     private static final String LOGIN = "root";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "13071995";
 
 	private ConnectionManagerMySQL() {
 		logger.info("Create new instance. Resource bundle complete");
