@@ -1,9 +1,5 @@
-html{
-    background:url("BekG7vTVhh8.jpg");
-    padding:20px;
-}
-
 body {
+    background: url(http://subtlepatterns.com/patterns/subtlenet2.png);
     width: 250px;
     margin: 0 auto;
 }

@@ -5,6 +5,12 @@
          http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
 
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://java2s.com/taglibs</taglib-uri>
+            <taglib-location>web/WEB-INF/goodTag.tld</taglib-location>
+        </taglib>
+    </jsp-config>
     <servlet>
         <servlet-name>goodSelect</servlet-name>
         <servlet-class>shop_servlets.GoodSelectServlet</servlet-class>

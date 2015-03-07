@@ -5,6 +5,13 @@
 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://java2s.com/taglibs</taglib-uri>
+            <taglib-location>/goodTag.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
     <servlet>
         <servlet-name>goodSelect</servlet-name>
         <servlet-class>shop_servlets.GoodSelectServlet</servlet-class>
