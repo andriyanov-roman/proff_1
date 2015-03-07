@@ -4,16 +4,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <!--<servlet>-->
-        <!--<servlet-name>Hello</servlet-name>-->
-        <!--<servlet-class>servelets.MyWeb</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>Hello</servlet-name>-->
-        <!--<url-pattern>/shop</url-pattern>-->
-    <!--</servlet-mapping>-->
     <display-name>WebShop</display-name>
+
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+        <welcome-file>login.htm</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>goodadd</servlet-name>
         <servlet-class>shopservlet.GoodAddServlet</servlet-class>
@@ -22,16 +19,6 @@
     <servlet-mapping>
         <servlet-name>goodadd</servlet-name>
         <url-pattern>/select</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>showgoods</servlet-name>
-        <servlet-class>shopservlet.ShowList</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>showgoods</servlet-name>
-        <url-pattern>/showGoods</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -73,5 +60,22 @@
         <servlet-name>addGood</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
+    <servlet>
+    <servlet-name>showgoods</servlet-name>
+    <servlet-class>shopservlet.ShowList</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>showgoods</servlet-name>
+    <url-pattern>/showGoods</url-pattern>
+    </servlet-mapping>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/MyTag.tld</taglib-uri>
+            <taglib-location>/MyTag.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
 
 </web-app>

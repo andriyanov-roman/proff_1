@@ -18,6 +18,7 @@ public class ViewAllGoods extends HttpServlet {
     public void init() {
         goodsDAO = new GoodsDAO();
     }
+
     protected void doGet(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher view = request.getRequestDispatcher("goodShowAll.jsp");
