@@ -5,6 +5,7 @@ import shop.user.Supplier;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Set;
 
 /**
  * Created by eugene on 18.02.15.
@@ -29,6 +30,11 @@ public class DBsupplier implements DAO<Supplier> {
             connection.close();
         }
 
+    }
+
+    @Override
+    public Set<Supplier> selectAll() {
+        return null;
     }
 }
 

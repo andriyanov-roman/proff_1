@@ -15,7 +15,7 @@ public class UserBase {
     private static final int LOGIN = 0;
     private static final int PASSWORD = 1;
 
-    private ArrayList<String[]> getStrings() throws IOException {
+    private ArrayList<String[]> getStrings(String border) throws IOException {
         ArrayList<String> stringList = new ArrayList<>();
         ArrayList<String[]> strings = new ArrayList<>();
 
@@ -28,18 +28,18 @@ public class UserBase {
         }
         reader.close();
         for (int i = 0; i < stringList.size(); i++) {
-            strings.add(stringList.get(i).split(":"));
+            strings.add(stringList.get(i).split(border));
         }
         return strings;
     }
 
    public ArrayList<User> getUsr() throws IOException {
       ArrayList<User> usr = new ArrayList<>();
-        for (int i = 0; i < getStrings().size(); i++) {
+        for (int i = 0; i < getStrings(":").size(); i++) {
 
             User user = new User();
-            user.setLogin((getStrings().get(i)[LOGIN]));
-            user.setPassword((getStrings().get(i)[PASSWORD]));
+            user.setLogin((getStrings(":").get(i)[LOGIN]));
+            user.setPassword((getStrings(":").get(i)[PASSWORD]));
             usr.add(user);
         }
 

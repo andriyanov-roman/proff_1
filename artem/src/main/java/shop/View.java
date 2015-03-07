@@ -30,9 +30,6 @@ public class View {
                     startProgram();
                     break;
                 }
-            } catch (MyException e) {
-                System.out.println(e);
-                userControl();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {

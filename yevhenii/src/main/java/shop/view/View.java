@@ -1,14 +1,12 @@
+
 package shop.view;
 
-import exceptions.Good;
-import exceptions.Validator;
-import shop.Shop;
-import shop.db_access.DAO;
+
+import shop.Good;
+import shop.Validator;
 import shop.db_access.DBgood;
 import shop.user.Authentification;
 import shop.user.SAdding;
-import shop.user.User;
-import test_p.reflection_test.Anno;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -16,12 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
-/**
- * Created by eugene on 01.02.15.
- */
 public class View {
     protected Scanner scanner = new Scanner(System.in);
     public ArrayList<Good> goods = new ArrayList<>();
@@ -39,7 +33,7 @@ public class View {
         String quest = scanner.next();
 
         while (quest != null) {
-            Good good = new Good();
+            shop.Good good = new shop.Good();
             Validator v = new Validator();
             if (quest.equals("0")) {
                 System.out.println("Closed");
@@ -99,21 +93,21 @@ public class View {
         } else if (res.equalsIgnoreCase("N")) {
 
 
-                try {
+            try {
 
-                    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("/home/eugene/proff_repos/proff_1/yevhenii/src/main/java/shop/view/report", true)));
-                    for (int i = 0; i < goods.size(); i++) {
-                        out.println(goods.get(i).toString());
-                    }
-
-                    out.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("/home/eugene/proff_repos/proff_1/yevhenii/src/main/java/shop/view/report", true)));
+                for (int i = 0; i < goods.size(); i++) {
+                    out.println(goods.get(i).toString());
                 }
-                System.out.println("OK!");
 
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-       }
+            System.out.println("OK!");
+
+        }
     }
+}
 
 
