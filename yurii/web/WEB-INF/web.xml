@@ -5,6 +5,18 @@
          http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
 
+
+
+
+    <servlet>
+        <servlet-name>RegisterNewUserServlet</servlet-name>
+        <servlet-class>servlets.RegisterNewUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterNewUserServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>AddNewGoodServlet</servlet-name>
         <servlet-class>servlets.AddNewGoodServlet</servlet-class>
