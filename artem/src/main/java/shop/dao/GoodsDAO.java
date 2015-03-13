@@ -38,7 +38,6 @@ public class GoodsDAO implements GoodDAO {
             good.setType(type);
             good.setName(name);
             goods.add(good);
-            System.out.println(id + "=" + good.toString());
         }
         return goods;
     }

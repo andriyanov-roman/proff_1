@@ -1,8 +1,7 @@
 package shop;
 
-import shop.dao.GoodDAO;
 import shop.dao.GoodsDAO;
-import test.io.reflection.NewAnnotation;
+import test.reflection.NewAnnotation;
 
 import java.io.*;
 import java.sql.*;
