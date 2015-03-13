@@ -11,6 +11,10 @@
         <a href="goodSelect.jsp">See all goods</a>
     </li>
 
+
 </ul>
 
+<form name="logout" method="get" action="logout">
+    <div class="btn"><input type="submit" value="Log Out" class="button"/></div>
+</form>
 

@@ -1,9 +1,21 @@
 package shop.goods;
 
-public class Good {
+import javax.persistence.*;
+import java.io.Serializable;
+@Entity
+@Table(name = "goods")
+public class Good implements Serializable{
+    static final long serialVersionUID = -7593775012501239456L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)  @Column(name = "id")
+    private int id;
+    @Column(name = "good_name")
     private String name;
+    @Column(name = "quantity")
     private int quantity;
+    @Column(name = "good_barcode")
     private long barcode;
+    @Column(name = "good_type")
     private String type;
 
     public Good() {

@@ -1,5 +1,7 @@
 package shop.goods;
 
+import org.hibernate.Session;
+import sessions_factory.HbFactory;
 import shop.db_access.GoodDAO;
 
 import java.io.*;
@@ -11,12 +13,11 @@ public class GoodUtility {
     GoodDAO goodDAO = new GoodDAO();
 
     public void addGood(Good good) {
-        if (goodDAO.selectAll().contains(good)) {
-            System.out.println("Good exists! Try again");
-        } else {
-            goodDAO.executeUpdate(good);
-            System.out.println("Good is valid");
-        }
+        Session session = HbFactory.instance().getSession();
+        session.getTransaction().begin();
+        session.save(good);
+        session.getTransaction().commit();
+        session.close();
     }
 
     public void printAllGoods(Set<Good> goods) {

@@ -1,11 +1,15 @@
 package shop.users;
 
-import shop.db_access.UserDAO;
+import org.hibernate.Session;
+import sessions_factory.HbFactory;
 
 public class UserUtility {
-    UserDAO userDAO = new UserDAO();
 
     public void addUser(User user) {
-        userDAO.executeUpdate(user);
+        Session session = HbFactory.instance().getSession();
+        session.getTransaction().begin();
+        session.save(user);
+        session.getTransaction().commit();
+        session.close();
     }
 }
