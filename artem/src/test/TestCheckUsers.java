@@ -21,6 +21,7 @@ public class TestCheckUsers {
         session.beginTransaction();
         session.getTransaction().commit();
         List <User> users =(List<User>)session.createCriteria(User.class).list();;
+
         return users;
     }
     @Test

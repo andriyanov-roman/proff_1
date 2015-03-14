@@ -1,5 +1,6 @@
 package shop;
 
+import hiber.HbFactory;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
@@ -58,6 +59,9 @@ public class ControlUser {
             }
         }
         return check;
+    }
+    public void registationUser() {
+
     }
 
 
