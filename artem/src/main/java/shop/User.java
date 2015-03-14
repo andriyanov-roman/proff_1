@@ -16,7 +16,7 @@ public class User implements Serializable {
     private Long id;
 
     @Column(name = "login")
-    String Login;
+    String login;
 
     @Column(name = "passwordd")
     String password;
@@ -38,11 +38,11 @@ public class User implements Serializable {
     }
 
     public String getLogin() {
-        return Login;
+        return login;
     }
 
     public void setLogin(String login) {
-        Login = login;
+        login = login;
     }
 
     public String getPassword() {
@@ -60,7 +60,7 @@ public class User implements Serializable {
 
         User user = (User) o;
 
-        if (Login != null ? !Login.equals(user.Login) : user.Login != null) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
 
@@ -70,7 +70,7 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (Login != null ? Login.hashCode() : 0);
+        result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
@@ -79,7 +79,7 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", Login='" + Login + '\'' +
+                ", Login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
