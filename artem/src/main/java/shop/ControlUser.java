@@ -42,6 +42,8 @@ public class ControlUser {
 //        return users;
 //    }
 
+    Session session;
+
     public List<User> getUsers() {
         SessionFactory sessions = new Configuration().configure().buildSessionFactory();
         Session session = sessions.openSession();
@@ -60,8 +62,16 @@ public class ControlUser {
         }
         return check;
     }
-    public void registationUser() {
 
+    public void registationUser(User user) {
+        session = HbFactory.getInstance().getSession();
+        try {
+            session.getTransaction().begin();
+            session.save(user);
+            session.getTransaction().commit();
+        } finally {
+            if (session != null) session.close();
+        }
     }
 
 
