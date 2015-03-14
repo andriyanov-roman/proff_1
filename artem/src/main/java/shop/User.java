@@ -1,21 +1,51 @@
 package shop;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
 /**
  * Created by artem on 31.01.15.
  */
-public class User {
-    String Login;
+@Entity
+@Table(name = "user")
+public class User implements Serializable {
+    static final long serialVersionUID = -7593775012501239455L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "login")
+    String login;
+
+    @Column(name = "passwordd")
     String password;
 
+    public User() {
+
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getLogin() {
-        return Login;
+        return login;
     }
 
     public void setLogin(String login) {
-        Login = login;
+        login = login;
     }
 
-    public String  getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -24,9 +54,32 @@ public class User {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "User{" +
-                "Login='" + Login + '\'' +
+                "id=" + id +
+                ", Login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

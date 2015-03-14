@@ -1,5 +1,6 @@
 package shop_servlets;
 
+import shop.db_access.GoodDAO;
 import shop.goods.Good;
 import shop.goods.GoodUtility;
 import shop.validation.GoodsValidator;
@@ -15,10 +16,12 @@ import java.io.IOException;
 public class GoodEnterServlet extends HttpServlet {
     GoodsValidator goodsValidator;
     GoodUtility goodUtility;
+    GoodDAO goodDAO = new GoodDAO();
 
     public void init() {
         goodsValidator = new GoodsValidator();
         goodUtility = new GoodUtility();
+        goodDAO = new GoodDAO();
     }
 
     protected void doPost(HttpServletRequest request,
@@ -28,14 +31,19 @@ public class GoodEnterServlet extends HttpServlet {
         String quantity = request.getParameter("quantity");
         String barcode = request.getParameter("barcode");
         String type = request.getParameter("type");
+
         if (goodsValidator.isGoodNameValid(name) && goodsValidator.isGoodQuantityValid(quantity)
                 && goodsValidator.isGoodBarcodeValid(barcode)
                 && goodsValidator.isGoodTypeValid(type)) {
-            RequestDispatcher view = request.getRequestDispatcher("goodCorrect.jsp");
-            view.forward(request, response);
-
             Good good = new Good(name, Integer.parseInt(quantity), Long.parseLong(barcode), type);
-            goodUtility.addGood(good);
+
+            if (goodDAO.selectAll().contains(good)) {
+                response.sendError(400);
+            } else {
+                goodUtility.addGood(good);
+                RequestDispatcher view = request.getRequestDispatcher("goodCorrect.jsp");
+                view.forward(request, response);
+            }
 
         } else {
             RequestDispatcher view = request.getRequestDispatcher("goodIncorrect.jsp");
