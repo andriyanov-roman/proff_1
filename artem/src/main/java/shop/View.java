@@ -1,7 +1,7 @@
 package shop;
 
 import shop.dao.GoodsDAO;
-import test.reflection.NewAnnotation;
+//import test.reflection.NewAnnotation;
 
 import java.io.*;
 import java.sql.*;
@@ -11,7 +11,7 @@ import java.util.zip.ZipOutputStream;
 
 
 public class View {
-    @NewAnnotation(name = "safsaf",value = 1)
+//    @NewAnnotation(name = "safsaf",value = 1)
     private Scanner scanner = new Scanner(System.in);
     private Validator validator = new Validator();
     private ControlUser controlUser = new ControlUser();

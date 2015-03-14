@@ -23,10 +23,11 @@
         </property>
         <property name="connection.password"/>
 
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <mapping class="shop.goods.Good" />
         <mapping class="shop.users.User" />
+        <mapping class="shop.users.UserRole"/>
 
     </session-factory>
 </hibernate-configuration>

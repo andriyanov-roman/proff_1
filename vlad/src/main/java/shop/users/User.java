@@ -1,5 +1,9 @@
 package shop.users;
 
+import org.hibernate.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -15,6 +19,10 @@ public class User implements Serializable {
     private String login;
     @Column(name = "password")
     private String password;
+
+    @OneToOne
+    @JoinColumn(name = "userRole", referencedColumnName = "id1")
+    private UserRole userRole;
 
     public String getLogin() {
         return login;
@@ -35,6 +43,15 @@ public class User implements Serializable {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public User() {
