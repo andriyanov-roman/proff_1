@@ -1,5 +1,8 @@
 package shop;
 
+import org.hibernate.*;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import shop.dao.GoodsDAO;
 import shop.dbaccess.ConnectionToDB;
 
@@ -11,37 +14,39 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class ControlUser {
-    String sql = "SELECT * FROM shop.user";
-    ConnectionToDB connectionToDB = ConnectionToDB.getDbCon();
+//    String sql = "SELECT * FROM shop.user";
+//    ConnectionToDB connectionToDB = ConnectionToDB.getDbCon();
+//    private static SessionFactory factory;
 
-
-//    public void init() throws ServletException {
-//        try {
-//            resultSet = connectionToDB.querys(sql);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
+    //    public ArrayList<User> getUsers() throws SQLException {
+//
+//        ResultSet resultSet = connectionToDB.querys(sql);
+//
+//        ArrayList<User> users = new ArrayList<>();
+//        while (resultSet.next()) {
+//            User user = new User();
+//            int id = resultSet.getInt("id");
+//            String login = resultSet.getString("login");
+//            String password = resultSet.getString("passwordd");
+//            user.setLogin(login);
+//            user.setPassword(password);
+//            users.add(user);
+//            System.out.println(user.toString());
 //        }
+//        return users;
 //    }
 
-
-    public ArrayList<User> getUsers() throws SQLException {
-
-        ResultSet resultSet = connectionToDB.querys(sql);
-
-        ArrayList<User> users = new ArrayList<>();
-        while (resultSet.next()) {
-            User user = new User();
-            int id = resultSet.getInt("id");
-            String login = resultSet.getString("login");
-            String password = resultSet.getString("passwordd");
-            user.setLogin(login);
-            user.setPassword(password);
-            users.add(user);
-            System.out.println(user.toString());
-        }
+    public List<User> getUsers() {
+        SessionFactory sessions = new Configuration().configure().buildSessionFactory();
+        Session session = sessions.openSession();
+        session.beginTransaction();
+        session.getTransaction().commit();
+        List<User> users = (List<User>) session.createCriteria(User.class).list();
         return users;
     }
 
@@ -54,6 +59,7 @@ public class ControlUser {
         }
         return check;
     }
+
 
 //    public  ArrayList<String[]> getStrings(String path) throws FileNotFoundException {
 //        ArrayList<String> stringList = new ArrayList<>();

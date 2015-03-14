@@ -1,5 +1,6 @@
 package shopservlet;
 
+import hiber.HibGoodsDAO;
 import shop.Good;
 import shop.dao.GoodsDAO;
 
@@ -15,19 +16,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by artem on 28.02.15.
  */
 public class ShowList extends HttpServlet {
-    ArrayList<Good> goods;
+    List<Good> goods;
 
     public void init() throws ServletException {
-        try {
-            goods = new GoodsDAO().readFromDB();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            goods = new HibGoodsDAO().readFromBD();
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
