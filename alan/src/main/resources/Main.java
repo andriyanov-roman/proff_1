@@ -10,8 +10,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import java.util.Map;
 
 /**
-* Created by root on 07.03.15.
-*/
+ * Created by Алан on 07.03.15.
+ */
 public class Main {
     private static final SessionFactory ourSessionFactory;
     private static final ServiceRegistry serviceRegistry;

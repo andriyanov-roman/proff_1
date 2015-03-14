@@ -1,7 +1,19 @@
 package shop.users;
 
-public class User {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "user")
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column(name = "login")
     private String login;
+    @Column(name = "password")
     private String password;
 
     public String getLogin() {
@@ -25,6 +37,18 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,6 +56,7 @@ public class User {
 
         User user = (User) o;
 
+        if (id != user.id) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
 
@@ -40,7 +65,8 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = login != null ? login.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
