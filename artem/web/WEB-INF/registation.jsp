@@ -12,7 +12,7 @@
 </head>
 <body>
 <div>
-  <form name="login" method="post" action="login">
+  <form name="registration" method="post" action="registration">
     <p class="txt">Login:</p>  <input class="entered" type="text" name="username"/>
     <p class="txt"> Password:</p> <input type="password" name="password"/> <br/>
     <input type="submit" value="Submit" class="button"/>

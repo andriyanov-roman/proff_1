@@ -14,13 +14,13 @@ public class Good implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)  @Column(name = "id")
     private Long id;
     @Column(name="good_name")
-    String name;
+    private String name;
     @Column(name="good_number")
-    int number;
+    private int number;
     @Column(name="barcode")
-    long barcode;
+    private long barcode;
     @Column(name="good_type")
-    String type;
+    private String type;
 
     public Good(){
 

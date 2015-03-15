@@ -28,6 +28,8 @@
         <mapping class="hiber.Person" />
         <mapping class="shop.Good" />
         <mapping class="shop.User" />
+        <mapping class="shop.userright.UserRole" />
+
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>

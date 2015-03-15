@@ -2,6 +2,7 @@ package shopservlet;
 
 import shop.ControlUser;
 import shop.User;
+import shop.Validator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,23 +18,23 @@ import java.sql.SQLException;
 public class RegistrationServlet extends HttpServlet {
     ControlUser controlUser=new ControlUser();
     User user=new User();
+    Validator validator = new Validator();
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         try {
-            if(controlUser.checkUser(username, password)==true){
-                RequestDispatcher view = request.getRequestDispatcher("errorregistration.jsp");
-                view.forward(request, response);
-            }
-            else{
+            if(((controlUser.checkUser(username, password)==false)||((validator.getName(username)&&validator.getName(password))==true))==true){
                 user.setLogin(username);
                 user.setPassword(password);
                 controlUser.registationUser(user);
                 RequestDispatcher view = request.getRequestDispatcher("login.jsp");
                 view.forward(request, response);
-
+            }
+            else{
+                RequestDispatcher view = request.getRequestDispatcher("errorregistration.jsp");
+                view.forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
