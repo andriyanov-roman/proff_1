@@ -3,10 +3,13 @@ package person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import singletones.Test;
+
+import javax.persistence.Query;
 
 public class MainForPerson {
+    Test test;
         private SessionFactory sessionFactory;
-
         public MainForPerson() {
             try {
                 sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -37,6 +40,7 @@ public class MainForPerson {
         }
         public static void main(String args[]) {
             new MainForPerson();
+            new TestOne();
         }
     }
 
