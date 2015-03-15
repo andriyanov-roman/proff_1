@@ -11,12 +11,19 @@
 <head>
     <title>TestBean</title>
 </head>
+<jsp:useBean id="goodinfo" class="test.bean.GoodsBean" scope="session"></jsp:useBean>
+<jsp:setProperty property="*" name="goodinfo"/>
 <body>
-<form name="mybean" method="post" action="beantest.jsp">
-Good Name: <input type="text" name="name"><br>
+<form name="goodinfo"  method="post" action ="${goodinfo.page}">
+  Good Name: <input type="text" name="name"><br>
   Good Type: <input type="text" name="type"><br>
   Good Number: <input type="text" name="number"><br>
   Good Barcode: <input type="text" name="barcode"><br>
+  <jsp:setProperty name="goodinfo" property="name"/>
+  <jsp:setProperty name="goodinfo" property="type"/>
+  <jsp:setProperty name="goodinfo" property="number"/>
+  <jsp:setProperty name="goodinfo" property="barcode"/>
   <input type="submit" value="add">
+
 </body>
 </html>

@@ -19,5 +19,6 @@
 <p>Goods barcode:
   <jsp:getProperty name="goodinfo" property="barcode"/>
 </p>
+<%goodinfo.saveGood();%>
 </body>
 </html>

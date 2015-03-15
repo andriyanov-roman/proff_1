@@ -1,33 +1,48 @@
 package test.bean;
 
+import hiber.HibGoodsDAO;
+import shop.Good;
+import shop.Validator;
+
 import java.io.Serializable;
 
 /**
  * Created by artem on 15.03.15.
  */
 public class GoodsBean implements Serializable {
-    private int number;
-    private long barcode;
+    private String number;
+    private String barcode;
     private String name;
     private String type;
+    private String page;
+
+
+
+    public void setPage(String page) {
+        this.page = page;
+    }
+
+    Validator validator = new Validator();
+    Good good = new Good();
+    HibGoodsDAO hibGoodsDAO = new HibGoodsDAO();
 
     public GoodsBean() {
 
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public long getBarcode() {
+    public String getBarcode() {
         return barcode;
     }
 
-    public void setBarcode(long barcode) {
+    public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
 
@@ -45,5 +60,30 @@ public class GoodsBean implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+    public String getPage() {
+        if (type != null && name != null && barcode != null && number != null) {
+            good.setType(type);
+            good.setName(name);
+            good.setBarcode(Long.parseLong(barcode));
+            good.setNumber(Integer.parseInt(number));
+            hibGoodsDAO.executeGood(good);
+            return "goodCorrect.jsp";
+        } else {
+            return "mainmenu.jsp";
+        }
+    }
+
+    public void saveGood() {
+        if (type != null && name != null && barcode != null && number != null) {
+            good.setType(type);
+            good.setName(name);
+            good.setBarcode(Long.parseLong(barcode));
+            good.setNumber(Integer.parseInt(number));
+            hibGoodsDAO.executeGood(good);
+            page = "goodCorrect.jsp";
+        } else {
+            page = "mainmenu.jsp";
+        }
     }
 }
