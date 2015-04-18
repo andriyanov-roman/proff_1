@@ -7,7 +7,7 @@
 
     <servlet>
         <servlet-name>Hello</servlet-name>
-        <servlet-class>servlets.Hello</servlet-class>
+        <servlet-class>GoodBean</servlet-class>
     </servlet>
 
     <servlet-mapping>
