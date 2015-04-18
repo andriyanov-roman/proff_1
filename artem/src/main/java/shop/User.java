@@ -1,5 +1,9 @@
 package shop;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import shop.userright.UserRole;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -21,9 +25,23 @@ public class User implements Serializable {
     @Column(name = "passwordd")
     String password;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @Fetch(value = FetchMode.SELECT)
+    @JoinColumn(name = "userRole", referencedColumnName = "ID")
+    private UserRole role;
+
     public User() {
 
     }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -52,7 +70,6 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,9 +77,10 @@ public class User implements Serializable {
 
         User user = (User) o;
 
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (role != null ? !role.equals(user.role) : user.role != null) return false;
 
         return true;
     }
@@ -72,6 +90,7 @@ public class User implements Serializable {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
 
@@ -79,8 +98,10 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", Login='" + login + '\'' +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", role=" + role +
                 '}';
     }
+
 }
