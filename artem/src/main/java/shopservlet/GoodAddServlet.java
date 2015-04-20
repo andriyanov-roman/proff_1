@@ -1,9 +1,11 @@
 package shopservlet;
 
-import hiber.HibGoodsDAO;
-import shop.Good;
-import shop.Validator;
-import shop.dao.GoodsDAO;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import shop.entity.Good;
+import shop.control.Validator;
+import spring.config.AppConfig;
+import spring.config.HibernateConfig;
+import spring.dao.GoodsDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,15 +13,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * Created by artem on 28.02.15.
  */
 public class GoodAddServlet extends HttpServlet {
-    Validator validator = new Validator();
-    HibGoodsDAO hibGoodsDAO = new HibGoodsDAO();
-    Good good = new Good();
+    AnnotationConfigApplicationContext ctx =
+            new AnnotationConfigApplicationContext(HibernateConfig.class,AppConfig.class);
+    Validator validator =(Validator) ctx.getBean("getValidator");
+    GoodsDAO goodsDAO = (GoodsDAO) ctx.getBean("getGoodsDao");
+    Good good =(Good) ctx.getBean("getGood");
 
     @Override
     protected void doPost(HttpServletRequest request,
@@ -33,7 +36,7 @@ public class GoodAddServlet extends HttpServlet {
             good.setName(name);
             good.setBarcode(Long.parseLong(barcode));
             good.setNumber(Integer.parseInt(number));
-            hibGoodsDAO.executeGood(good);
+            goodsDAO.executeGood(good);
 
             RequestDispatcher view = request.getRequestDispatcher("goodCorrect.jsp");
             view.forward(request, response);

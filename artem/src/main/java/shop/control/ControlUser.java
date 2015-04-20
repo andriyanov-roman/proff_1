@@ -1,46 +1,15 @@
-package shop;
+package shop.control;
 
 import hiber.HbFactory;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
-import shop.dao.GoodsDAO;
-import shop.dbaccess.ConnectionToDB;
+import shop.entity.User;
 
-import javax.jws.soap.SOAPBinding;
-import javax.servlet.ServletException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 public class ControlUser {
-//    String sql = "SELECT * FROM shop.user";
-//    ConnectionToDB connectionToDB = ConnectionToDB.getDbCon();
-//    private static SessionFactory factory;
 
-    //    public ArrayList<User> getUsers() throws SQLException {
-//
-//        ResultSet resultSet = connectionToDB.querys(sql);
-//
-//        ArrayList<User> users = new ArrayList<>();
-//        while (resultSet.next()) {
-//            User user = new User();
-//            int id = resultSet.getInt("id");
-//            String login = resultSet.getString("login");
-//            String password = resultSet.getString("passwordd");
-//            user.setLogin(login);
-//            user.setPassword(password);
-//            users.add(user);
-//            System.out.println(user.toString());
-//        }
-//        return users;
-//    }
 
     Session session;
 

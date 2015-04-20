@@ -1,8 +1,7 @@
 import hiber.HbFactory;
-import hiber.Person;
 import org.hibernate.Session;
 import org.junit.Test;
-import shop.Good;
+import shop.entity.Good;
 
 
 public class TestAddGoodToDB {

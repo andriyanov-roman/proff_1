@@ -2,7 +2,6 @@ import hiber.HbFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.junit.Test;
-import shop.User;
 
 
 import java.util.List;

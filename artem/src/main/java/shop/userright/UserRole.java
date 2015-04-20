@@ -1,9 +1,5 @@
 package shop.userright;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import shop.User;
-
 import javax.persistence.*;
 import java.io.Serializable;
 

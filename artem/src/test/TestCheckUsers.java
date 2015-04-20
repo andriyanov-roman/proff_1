@@ -1,12 +1,8 @@
 import org.hibernate.*;
-import org.hibernate.annotations.SourceType;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
-import shop.User;
+import shop.entity.User;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**

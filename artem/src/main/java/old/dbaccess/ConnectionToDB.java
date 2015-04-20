@@ -1,4 +1,4 @@
-package shop.dbaccess;
+package old.dbaccess;
 
 
 import java.sql.*;

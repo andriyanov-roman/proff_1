@@ -1,31 +1,31 @@
 package shopservlet;
 
-import hiber.HibGoodsDAO;
-import shop.Good;
-import shop.dao.GoodsDAO;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import shop.entity.Good;
+import spring.config.AppConfig;
+import spring.config.HibernateConfig;
+import spring.dao.GoodsDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by artem on 28.02.15.
  */
 public class ShowList extends HttpServlet {
+    AnnotationConfigApplicationContext ctx =
+            new AnnotationConfigApplicationContext(HibernateConfig.class,AppConfig.class);
+    GoodsDAO goodsDAO=(GoodsDAO) ctx.getBean("getGoodsDao");
     List<Good> goods;
 
     public void init() throws ServletException {
-            goods = new HibGoodsDAO().readFromBD();
+            goods = goodsDAO.findAllGoods();
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)

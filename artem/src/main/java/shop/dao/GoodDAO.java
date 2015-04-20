@@ -1,9 +1,8 @@
 package shop.dao;
 
-import shop.Good;
+import shop.entity.Good;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Created by artem on 15.02.15.

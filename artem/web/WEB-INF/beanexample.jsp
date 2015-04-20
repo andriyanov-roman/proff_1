@@ -14,7 +14,7 @@
 <jsp:useBean id="goodinfo" class="test.bean.GoodsBean" scope="session"></jsp:useBean>
 <jsp:setProperty property="*" name="goodinfo"/>
 <body>
-<form name="goodinfo"  method="post" action ="${goodinfo.page}">
+<form name="goodinfo"  method="post" action ="<%= goodinfo.getPage()%>">
   Good Name: <input type="text" name="name"><br>
   Good Type: <input type="text" name="type"><br>
   Good Number: <input type="text" name="number"><br>
@@ -24,6 +24,5 @@
   <jsp:setProperty name="goodinfo" property="number"/>
   <jsp:setProperty name="goodinfo" property="barcode"/>
   <input type="submit" value="add">
-
 </body>
 </html>

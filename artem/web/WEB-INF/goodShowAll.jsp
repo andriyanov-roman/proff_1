@@ -1,4 +1,4 @@
-<%@ page import="shop.dao.GoodsDAO" %>
+<%@ page import="shop.dao.GoodDAOimpl" %>
 <%--
   Created by IntelliJ IDEA.
   User: artem

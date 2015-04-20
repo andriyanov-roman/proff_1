@@ -1,6 +1,6 @@
-package shop.dbaccess;
+package old.dbaccess;
 
-import shop.Good;
+import shop.entity.Good;
 
 import java.sql.*;
 

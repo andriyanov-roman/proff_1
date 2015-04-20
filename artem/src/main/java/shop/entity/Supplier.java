@@ -1,4 +1,4 @@
-package shop;
+package shop.entity;
 
 /**
  * Created by artem on 07.03.15.

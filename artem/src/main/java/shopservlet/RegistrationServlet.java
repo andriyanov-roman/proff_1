@@ -1,8 +1,11 @@
 package shopservlet;
 
-import shop.ControlUser;
-import shop.User;
-import shop.Validator;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import shop.control.ControlUser;
+import shop.entity.User;
+import shop.control.Validator;
+import spring.config.AppConfig;
+import spring.config.HibernateConfig;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,9 +19,11 @@ import java.sql.SQLException;
  * Created by artem on 14.03.15.
  */
 public class RegistrationServlet extends HttpServlet {
-    ControlUser controlUser=new ControlUser();
-    User user=new User();
-    Validator validator = new Validator();
+    AnnotationConfigApplicationContext ctx =
+            new AnnotationConfigApplicationContext(HibernateConfig.class,AppConfig.class);
+    ControlUser controlUser=(ControlUser) ctx.getBean("getControlUser");
+    User user=(User) ctx.getBean("getUser");
+    Validator validator = (Validator) ctx.getBean("getValidator");
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {

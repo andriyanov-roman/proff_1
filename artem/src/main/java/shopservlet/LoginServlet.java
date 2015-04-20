@@ -1,7 +1,9 @@
 package shopservlet;
 
-import shop.ControlUser;
-import shop.dao.GoodsDAO;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import shop.control.ControlUser;
+import spring.config.AppConfig;
+import spring.config.HibernateConfig;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,8 +17,9 @@ import java.sql.SQLException;
  * Created by artem on 28.02.15.
  */
 public class LoginServlet extends HttpServlet {
-
-    ControlUser controlUser=new ControlUser();
+    AnnotationConfigApplicationContext ctx =
+            new AnnotationConfigApplicationContext(HibernateConfig.class,AppConfig.class);
+    ControlUser controlUser=(ControlUser) ctx.getBean("getControlUser");
 
     @Override
     protected void doPost(HttpServletRequest request,

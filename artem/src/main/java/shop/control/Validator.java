@@ -1,4 +1,4 @@
-package shop;
+package shop.control;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

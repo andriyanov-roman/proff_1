@@ -1,11 +1,8 @@
-package shop;
+package shop.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by artem on 24.01.15.
- */
 @Entity
 @Table(name = "goods")
 public class Good implements Serializable {

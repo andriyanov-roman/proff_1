@@ -1,20 +1,17 @@
-package hiber;
+package spring.dao;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Repository;
 import shop.entity.Good;
 
 import java.util.List;
 
-/**
- * Created by artem on 08.03.15.
- */
-public class HibGoodsDAO {
-    Session session;
-
+@Repository
+public class GoodsDAO extends AbstractDAO implements IGoodsDAO  {
+    @Override
     public void executeGood(Good good) {
-        session = HbFactory.getInstance().getSession();
+        Session session=null;
+        session = getSession();
         try {
             session.getTransaction().begin();
             session.save(good);
@@ -22,11 +19,13 @@ public class HibGoodsDAO {
         } finally {
             if (session != null) session.close();
         }
+
     }
 
-    public List<Good> readFromBD() {
-        SessionFactory sessions = new Configuration().configure().buildSessionFactory();
-        Session session = sessions.openSession();
+    @Override
+    public List<Good> findAllGoods() {
+        Session session=null;
+        session = getSession();
         session.beginTransaction();
         session.getTransaction().commit();
         List<Good> goods = (List<Good>) session.createCriteria(Good.class).list();

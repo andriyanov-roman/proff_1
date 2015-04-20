@@ -1,20 +1,14 @@
 package test.tag;
 
 
-        import shop.Good;
-        import shop.dao.GoodsDAO;
+        import shop.dao.GoodDAOimpl;
 
-        import javax.servlet.ServletException;
         import javax.servlet.jsp.*;
         import javax.servlet.jsp.tagext.*;
 
-        import java.io.IOException;
-        import java.sql.SQLException;
-        import java.util.ArrayList;
-
 public class MyTag extends TagSupport
 {
-   GoodsDAO goodsDAO=new GoodsDAO();
+   GoodDAOimpl goodsDAO=new GoodDAOimpl();
 //    ArrayList <Good> goods=new ArrayList<>();
 //
 //    public void init() throws ServletException {

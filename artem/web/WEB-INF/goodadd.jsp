@@ -1,5 +1,5 @@
-<%@ page import="shop.Good" %>
-<%@ page import="shop.dao.GoodsDAO" %>
+<%@ page import="shop.entity.Good" %>
+<%@ page import="shop.dao.GoodDAOimpl" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tatty
@@ -7,7 +7,7 @@
   Time: 12:10
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="shop.*, java.util.*, java.io.*,shop.Good,shop.dao.GoodsDAO" contentType="text/html;charset=UTF-8"
+<%@ page import="shop.*, java.util.*, java.io.*" contentType="text/html;charset=UTF-8"
          language="java" %>
 <html>
 <head>

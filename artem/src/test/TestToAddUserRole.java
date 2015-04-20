@@ -1,7 +1,7 @@
 import hiber.HbFactory;
 import org.hibernate.Session;
 import org.junit.Test;
-import shop.User;
+import shop.entity.User;
 import shop.userright.UserRole;
 
 /**
@@ -18,7 +18,6 @@ public class TestToAddUserRole {
         userRole.setName("asf");
         user.setPassword("name");
         user.setLogin("user");
-        user.setRole(userRole);
         session.getTransaction().begin();
         session.save(userRole);
         session.save(user);

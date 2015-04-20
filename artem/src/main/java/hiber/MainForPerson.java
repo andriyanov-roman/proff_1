@@ -2,9 +2,7 @@ package hiber;
 
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import shop.Good;
+import shop.entity.Good;
 
 /**
  * Created by artem on 07.03.15.

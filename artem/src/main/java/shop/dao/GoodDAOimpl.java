@@ -1,13 +1,13 @@
 package shop.dao;
 
-import shop.Good;
-import shop.dbaccess.ConnectionToDB;
+import shop.entity.Good;
+import old.dbaccess.ConnectionToDB;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 
-public class GoodsDAO implements GoodDAO {
+public class GoodDAOimpl implements GoodDAO {
     ConnectionToDB connectionToDB = ConnectionToDB.getDbCon();
     String sqlUpdate = "INSERT INTO shop.goods (good_name, good_number, barcode, good_type) VALUES (?,?,?,?)";
     String sqlRead = "SELECT * FROM shop.goods";

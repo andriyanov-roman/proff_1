@@ -1,0 +1,24 @@
+name:user
+user:name
+klassniy:parol
+//    String sql = "SELECT * FROM shop.user";
+//    ConnectionToDB connectionToDB = ConnectionToDB.getDbCon();
+//    private static SessionFactory factory;
+
+    //    public ArrayList<User> getUsers() throws SQLException {
+//
+//        ResultSet resultSet = connectionToDB.querys(sql);
+//
+//        ArrayList<User> users = new ArrayList<>();
+//        while (resultSet.next()) {
+//            User user = new User();
+//            int id = resultSet.getInt("id");
+//            String login = resultSet.getString("login");
+//            String password = resultSet.getString("passwordd");
+//            user.setLogin(login);
+//            user.setPassword(password);
+//            users.add(user);
+//            System.out.println(user.toString());
+//        }
+//        return users;
+//    }

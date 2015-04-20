@@ -26,8 +26,8 @@
             update
         </property>
         <mapping class="hiber.Person" />
-        <mapping class="shop.Good" />
-        <mapping class="shop.User" />
+        <mapping class="shop.entity.Good" />
+        <mapping class="shop.entity.User" />
         <mapping class="shop.userright.UserRole" />
 
         <!-- DB schema will be updated if needed -->

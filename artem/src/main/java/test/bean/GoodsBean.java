@@ -1,8 +1,8 @@
 package test.bean;
 
 import hiber.HibGoodsDAO;
-import shop.Good;
-import shop.Validator;
+import shop.entity.Good;
+import shop.control.Validator;
 
 import java.io.Serializable;
 
@@ -61,29 +61,34 @@ public class GoodsBean implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+
     public String getPage() {
-        if (type != null && name != null && barcode != null && number != null) {
+        if (name != null && type != null && barcode != null && number != null) {
             good.setType(type);
             good.setName(name);
             good.setBarcode(Long.parseLong(barcode));
             good.setNumber(Integer.parseInt(number));
             hibGoodsDAO.executeGood(good);
-            return "goodCorrect.jsp";
+            page="goodCorrect.jsp";
+            return page;
         } else {
-            return "mainmenu.jsp";
+            page="mainmenu.jsp";
+            return page;
         }
     }
 
-    public void saveGood() {
+    public String saveGood() {
         if (type != null && name != null && barcode != null && number != null) {
             good.setType(type);
             good.setName(name);
             good.setBarcode(Long.parseLong(barcode));
             good.setNumber(Integer.parseInt(number));
             hibGoodsDAO.executeGood(good);
-            page = "goodCorrect.jsp";
+            page="goodCorrect.jsp";
+            return page;
         } else {
-            page = "mainmenu.jsp";
+            page="mainmenu.jsp";
+            return page;
         }
     }
 }
